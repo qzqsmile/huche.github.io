@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>Zk</title>
+      <title>Zookeeper的一些常用应用场景</title>
       <link>http://localhost:1313/post/zk/</link>
       <pubDate>Tue, 23 Jun 2020 21:38:50 +0800</pubDate>
       
       <guid>http://localhost:1313/post/zk/</guid>
-      <description></description>
+      <description>分布式队列 分布式锁 服务发现 分布式队列 分布式消息 配置中心</description>
     </item>
     
     <item>
