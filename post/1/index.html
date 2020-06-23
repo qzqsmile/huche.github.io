@@ -23,7 +23,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.60.1 with theme even" />
+<meta name="generator" content="Hugo 0.71.1 with theme even" />
 
 
 <link rel="canonical" href="http://localhost:1313/post/1/" />
@@ -48,7 +48,7 @@
 <meta itemprop="description" content="输入一条URL，Flask会如何解析 利用flask写应用也有一段时间了，这里尝试分析下flask的官网最简单的 hello world 的demo来加深对flas">
 <meta itemprop="datePublished" content="2019-12-05T16:12:24&#43;08:00" />
 <meta itemprop="dateModified" content="2019-12-05T16:12:24&#43;08:00" />
-<meta itemprop="wordCount" content="1273">
+<meta itemprop="wordCount" content="1328">
 
 
 
@@ -137,39 +137,98 @@
   </div>
 </div>
     <div class="post-content">
-      <h1 id="urlflask">输入一条URL，Flask会如何解析</h1>
+      <h1 id="输入一条urlflask会如何解析">输入一条URL，Flask会如何解析</h1>
 <p>  利用flask写应用也有一段时间了，这里尝试分析下flask的官网最简单的 <code>hello world</code> 的demo来加深对flask的理解。</p>
-<pre><code>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
+@app.route(&#39;/&#39;)
 def hello_world():
-    return 'Hello World!'
+    return &#39;Hello World!&#39;
 
-if __name__ == '__main__':
+if __name__ == &#39;__main__&#39;:
     app.run()
-</code></pre><p>  上边的这段代码就是flask官网给出的hello world的应用，具体可以参照<a href="http://docs.jinkan.org/docs/flask/quickstart.html#a-minimal-application">这里</a>。仔细观察一下以上代码，可以看出来，其实对于像flask的这种Web框架，其本质上的任务是建立URL到业务处理函数之间的mapping关系。具体到这个hello world的例子当中建立的就是 URL<code>\</code> 到 <code>hello_world</code>的映射关系。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>  上边的这段代码就是flask官网给出的hello world的应用，具体可以参照<a href="http://docs.jinkan.org/docs/flask/quickstart.html#a-minimal-application">这里</a>。仔细观察一下以上代码，可以看出来，其实对于像flask的这种Web框架，其本质上的任务是建立URL到业务处理函数之间的mapping关系。具体到这个hello world的例子当中建立的就是 URL<code>\</code> 到 <code>hello_world</code>的映射关系。</p>
 <p>  说到这种mapping关系，对数据结构稍微熟悉些的人都会想到hash table.事实上flask中确实使用了hash table作为映射的机制。</p>
-<pre><code> def route(self, rule, **options):
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"> def route(self, rule, **options):
         def decorator(f):
-            endpoint = options.pop('endpoint', None)
+            endpoint = options.pop(&#39;endpoint&#39;, None)
             self.add_url_rule(rule, endpoint, f, **options)
             return f
         return decorator
-</code></pre><p>  这里先看一看 <code>app.route</code>的代码,这里可以看出来这个其实实际上就是这个Python最常用的装饰器，实际起作用的代码在add_url_rule当中。</p>
-<pre><code>    def add_url_rule(self, rule, endpoint=None, view_func=None,provide_automatic_options=None, **options):
+</code></pre></td></tr></table>
+</div>
+</div><p>  这里先看一看 <code>app.route</code>的代码,这里可以看出来这个其实实际上就是这个Python最常用的装饰器，实际起作用的代码在add_url_rule当中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">    def add_url_rule(self, rule, endpoint=None, view_func=None,provide_automatic_options=None, **options):
         .........
           self.url_map.add(rule) #1
         if view_func is not None:
             old_func = self.view_functions.get(endpoint) 
             if old_func is not None and old_func != view_func:
-                raise AssertionError('View function mapping is overwriting an ''existing endpoint function: %s' % endpoint)
+                raise AssertionError(&#39;View function mapping is overwriting an &#39;&#39;existing endpoint function: %s&#39; % endpoint)
             self.view_functions[endpoint] = view_func #2
-</code></pre><p>  点入app_url_rule当中后，发到实际工作的代码处。其中大部分代码是具体一些具体的参数设置，而映射的主要工作如上图的代码所示。在具体的阐明各个代码的具体工作原理之前，首先我们需要知道Flask是基于werkzeug实现的。此文的重点在于Flask，所以不会过多的涉及werkzeug的内容，仅仅将某些是werkzeug实现的功能进行带过。</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>  点入app_url_rule当中后，发到实际工作的代码处。其中大部分代码是具体一些具体的参数设置，而映射的主要工作如上图的代码所示。在具体的阐明各个代码的具体工作原理之前，首先我们需要知道Flask是基于werkzeug实现的。此文的重点在于Flask，所以不会过多的涉及werkzeug的内容，仅仅将某些是werkzeug实现的功能进行带过。</p>
 <p>  前文一直在说Flask实现的功能是将URL对相应的处理函数的映射。其实是不精确的，因为实际上Flask中有三个层次的东西，相应的映射关系为URL-&gt;EndPoint-&gt;ViewFunction。其中URL即为请求中的网址，而viewfunction 则为相应的逻辑处理函数。至于为什么要在中间加一次endpoint，答案很简单，这样的处理更加灵活。具体可以参见stackoverflow的这篇<a href="https://stackoverflow.com/questions/19261833/what-is-an-endpoint-in-flask">回答</a>。</p>
 <p>  回到上边的代码，其中#1 处实现了url到endpoint的映射的设置(werkzeug来实现)。而#2则是实现了Endpoint-&gt;ViewFunction.其中Viewfunction即函数<code>hello_world</code>.而对于app.run的这种函数，分析其代码可以发现其相应的处理逻辑。</p>
-<pre><code>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">
     def run(self, host=None, port=None, debug=None,
             load_dotenv=True, **options):
         .....
@@ -182,9 +241,33 @@ if __name__ == '__main__':
             # reset normally.  This makes it possible to restart the server
             # without reloader and that stuff from an interactive shell.
             self._got_first_request = False
-</code></pre><p>  其中#1即为Werkzeug中相应的逻辑处理，它负责调用self的<code>__call__</code>函数，而app的<code>__call__</code>则会调用 <code>wsgi_app</code>函数。
+</code></pre></td></tr></table>
+</div>
+</div><p>  其中#1即为Werkzeug中相应的逻辑处理，它负责调用self的<code>__call__</code>函数，而app的<code>__call__</code>则会调用 <code>wsgi_app</code>函数。
 而wsgi_app即为处理相应request的框架函数，</p>
-<pre><code>    def wsgi_app(self, environ, start_response):
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">    def wsgi_app(self, environ, start_response):
        ctx = self.request_context(environ)
         error = None
         try:
@@ -202,7 +285,9 @@ if __name__ == '__main__':
             if self.should_ignore_error(error):
                 error = None
             ctx.auto_pop(error)
-</code></pre><p>其中 environ为相应的request的请求上下文信息(由WerkZeug)进行保证。
+</code></pre></td></tr></table>
+</div>
+</div><p>其中 environ为相应的request的请求上下文信息(由WerkZeug)进行保证。
 #1出对其进行相应的逻辑处理，然后返回response。而这个response又会交由 werkzeug返还给客服端。</p>
 
     </div>
@@ -225,7 +310,11 @@ if __name__ == '__main__':
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/go_memory_translate/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Go_memory_translate</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         
       </nav>
     </footer>

@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Dec 2019 16:12:24 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2020 21:38:50 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,24 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Zk</title>
+      <link>http://localhost:1313/post/zk/</link>
+      <pubDate>Tue, 23 Jun 2020 21:38:50 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/zk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go_memory_translate</title>
+      <link>http://localhost:1313/post/go_memory_translate/</link>
+      <pubDate>Tue, 23 Jun 2020 00:27:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go_memory_translate/</guid>
+      <description>https://medium.com/a-journey-with-go/go-memory-management-and-allocation-a7396d430f44 Go语言的内存管理是由标准库完成的，？？。 即使开发者不需要与内存管理打交道，go语言的内存管理仍然做了很多优化，并且有一些很有趣的概念。 在</description>
     </item>
     
     <item>
