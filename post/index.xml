@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2020 21:38:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 23:39:29 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s笔记</title>
+      <link>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 13 Jul 2020 23:39:29 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods</description>
+    </item>
     
     <item>
       <title>Zookeeper的一些常用应用场景</title>
