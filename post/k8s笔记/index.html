@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以c" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,22 +39,22 @@
 
 
 <meta property="og:title" content="K8s笔记" />
-<meta property="og:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods" />
+<meta property="og:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以c" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/" />
 <meta property="article:published_time" content="2020-07-13T23:39:29+08:00" />
 <meta property="article:modified_time" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="name" content="K8s笔记">
-<meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods">
+<meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以c">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29&#43;08:00" />
-<meta itemprop="wordCount" content="121">
+<meta itemprop="wordCount" content="397">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="K8s笔记"/>
-<meta name="twitter:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods"/>
+<meta name="twitter:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以c"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -141,7 +141,11 @@
 <ol>
 <li>
 <p>Pods
-K8s调度的最小单元</p>
+K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以container作为最小的调度单位。主要原因有两点：</p>
+<ol>
+<li>因为某些程序需要多个进程进行协同进行功能，换一句话说就是某些program需要多进程来实现。但是container的设计初衷则是就是为了单进程的。如果在container中强行利用fork实现多进程，对于fork出来的进程其实是没法进行管理的。（这里略有疑惑）</li>
+<li>对于Pod而言，利用一个local的一个小的container，可以实现同一个pod中的所有container。共享一些资源，比如network等等。对于Pod而言也有自己的IP地址。</li>
+</ol>
 </li>
 <li>
 <p>Service

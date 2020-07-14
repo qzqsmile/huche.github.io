@@ -17,7 +17,7 @@
       <pubDate>Mon, 13 Jul 2020 23:39:29 +0800</pubDate>
       
       <guid>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</guid>
-      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元 Service 用于辅助Pods与外界通信的moudle，因为Pods</description>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pods K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以c</description>
     </item>
     
     <item>
