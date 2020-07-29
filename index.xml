@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2020 21:38:50 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 23:39:29 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>K8s笔记</title>
+      <link>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 13 Jul 2020 23:39:29 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 在k8s的container中运行 Pods是K8s调度的最小单元， 这里经常会有</description>
     </item>
     
     <item>
