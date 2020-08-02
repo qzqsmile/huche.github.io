@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Dec 2019 16:12:24 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2020 22:59:13 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,42 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Microserver</title>
+      <link>http://localhost:1313/post/microserver/</link>
+      <pubDate>Wed, 29 Jul 2020 22:59:13 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/microserver/</guid>
+      <description>微服务的架构 以前应用都是比较小的规模，可以单体开发。但是当规模上来以后，不同的人负责不同的模块，这时相互之间的耦合会很复杂，如果仍采用单体应</description>
+    </item>
+    
+    <item>
+      <title>K8s笔记</title>
+      <link>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 13 Jul 2020 23:39:29 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，</description>
+    </item>
+    
+    <item>
+      <title>Zookeeper的一些常用应用场景</title>
+      <link>http://localhost:1313/post/zk/</link>
+      <pubDate>Tue, 23 Jun 2020 21:38:50 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/zk/</guid>
+      <description>zookeeper可以简单认为是一个KV系统，它与其它的一些存储组件。比如 Mysql， Redis 集群的区别。个人认为主要集中在以下几个方面 由于Zab</description>
+    </item>
+    
+    <item>
+      <title>Go_memory_translate</title>
+      <link>http://localhost:1313/post/go_memory_translate/</link>
+      <pubDate>Tue, 23 Jun 2020 00:27:11 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go_memory_translate/</guid>
+      <description>https://medium.com/a-journey-with-go/go-memory-management-and-allocation-a7396d430f44 Go语言的内存管理是由标准库完成的，？？。 即使开发者不需要与内存管理打交道，go语言的内存管理仍然做了很多优化，并且有一些很有趣的概念。 在</description>
     </item>
     
     <item>

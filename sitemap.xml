@@ -10,20 +10,48 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2019-12-05T16:12:24+08:00</lastmod>
+    <lastmod>2020-07-29T22:59:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/1/</loc>
-    <lastmod>2019-12-05T16:12:24+08:00</lastmod>
+    <loc>http://localhost:1313/post/microserver/</loc>
+    <lastmod>2020-07-29T22:59:13+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/post/</loc>
+    <lastmod>2020-07-29T22:59:13+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-07-13T23:39:29+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/zk/</loc>
+    <lastmod>2020-06-23T21:38:50+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/go_memory_translate/</loc>
+    <lastmod>2020-06-23T00:27:11+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/1/</loc>
     <lastmod>2019-12-05T16:12:24+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
