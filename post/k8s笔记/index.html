@@ -48,7 +48,7 @@
 <meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29&#43;08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29&#43;08:00" />
-<meta itemprop="wordCount" content="1193">
+<meta itemprop="wordCount" content="1649">
 
 
 
@@ -143,6 +143,10 @@
     <li><a href="#deployment">deployment</a></li>
     <li><a href="#namespace">Namespace</a></li>
     <li><a href="#deamonset">Deamonset</a></li>
+    <li><a href="#liveness--readiness">Liveness &amp; Readiness</a></li>
+    <li><a href="#volume">volume</a></li>
+    <li><a href="#configmapsecrets">ConfigMap&amp;Secrets</a></li>
+    <li><a href="#疑问点">疑问点</a></li>
   </ul>
 </nav>
   </div>
@@ -204,6 +208,26 @@ kube-system：包含了许多的k8s默认的系统资源</p>
 - key: node-role.kubernetes.io/master
 effect: NoSchedule</p>
 <p>这里要注意污点的影响</p>
+<h2 id="liveness--readiness">Liveness &amp; Readiness</h2>
+<p>有三种Liveness，</p>
+<ol>
+<li>ExecAction: 执行特定的命令，成功则退出码为0</li>
+<li>TCPSocketAction， 执行TCP检查固定的端口</li>
+<li>HTTPGetAction 执行HTTP检查固定的端口
+Liveness检查Pods是否是活跃的，不是的话，尝试重启。
+readinessProbe 则是在Pod中的容器启动完成后，就认为Pod中的应用程序可以对外提供服务。该Pod就会加入到对应的Service</li>
+</ol>
+<h2 id="volume">volume</h2>
+<p>为了各种Pod之间共享数据。Volume有两个基本的概念PV PVC
+其中PV是给管理员使用的，用于指定数据具体存放在什么地方。如果用公有云部署，那么一般都会提供相应的存储系统，比如Azure的Azurefile。
+PVC则是用户使用的。其中StorageClass需要与PV相同，用于绑定相应的PV。
+一般的绑定逻辑是POD—&gt;PVC-&gt;PV</p>
+<p>HostPath: 存放在Node上的类型
+EmptyDir： 用于多个Container之间共享的类型</p>
+<h2 id="configmapsecrets">ConfigMap&amp;Secrets</h2>
+<p>用于存放程序配置的component.其中Secrets中会Base64加密</p>
+<h2 id="疑问点">疑问点</h2>
+<p>Service与Pod之间的mapping关系,如何创建一个nodeport</p>
 
     </div>
 
