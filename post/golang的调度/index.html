@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="Golang协程调度的知识点总结" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,22 +39,22 @@
 
 
 <meta property="og:title" content="Golang的调度" />
-<meta property="og:description" content="Golang协程调度的知识点总结" />
+<meta property="og:description" content="Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/golang%E7%9A%84%E8%B0%83%E5%BA%A6/" />
 <meta property="article:published_time" content="2020-08-05T23:02:08+08:00" />
 <meta property="article:modified_time" content="2020-08-05T23:02:08+08:00" />
 <meta itemprop="name" content="Golang的调度">
-<meta itemprop="description" content="Golang协程调度的知识点总结">
+<meta itemprop="description" content="Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统">
 <meta itemprop="datePublished" content="2020-08-05T23:02:08&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-05T23:02:08&#43;08:00" />
-<meta itemprop="wordCount" content="16">
+<meta itemprop="wordCount" content="455">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Golang的调度"/>
-<meta name="twitter:description" content="Golang协程调度的知识点总结"/>
+<meta name="twitter:description" content="Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -138,6 +138,18 @@
 </div>
     <div class="post-content">
       <p>Golang协程调度的知识点总结</p>
+<ol>
+<li>Golang协程调度器的由来 <!-- raw HTML omitted -->
+我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统，此时也不存在什么并发的问题。但随着人们处理的问题越发复杂，以及硬件系统的增强。Windows以及Linux这些多任务的处理系统开始流行起来。<!-- raw HTML omitted -->
+这些操作系统解决多任务的方式是使用进程+线程的模型。但是进程和线程的模型有一个显著的缺点，即切换的时候因为要陷入内核，所以切换的消耗非常多，而且其占用的系统资源比较多，即使是相对轻量的线程也要占用4MB的内存。在一些高并发的场景下更加明显，所以以Golang为代表的一系列编程语言想在用户态当中实现一个更为轻量级的调度器，即为协程调度器。<!-- raw HTML omitted -->
+为了解决线程切换的问题，一个显然的思路即是将协程与线程绑定此处，有三种绑定方式 <!-- raw HTML omitted --></li>
+</ol>
+<ul>
+<li>1:1 缺点：协程调度器意义不大</li>
+<li>n:1 缺点: 一旦阻塞其它的协程就凉凉了</li>
+<li>m:n 相对合理 <!-- raw HTML omitted -->
+很显然最为合理的调度方式极为m:n。同时golang为了优化局部性和锁的问题。在线程和协程之间又引入了P，即golang的GMP协程调度模型。</li>
+</ul>
 
     </div>
 

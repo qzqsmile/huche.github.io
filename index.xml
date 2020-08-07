@@ -28,7 +28,7 @@ It makes use of a variety of open source projects including:
       <pubDate>Wed, 05 Aug 2020 23:02:08 +0800</pubDate>
       
       <guid>http://localhost:1313/post/golang%E7%9A%84%E8%B0%83%E5%BA%A6/</guid>
-      <description>Golang协程调度的知识点总结</description>
+      <description>Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统</description>
     </item>
     
     <item>
