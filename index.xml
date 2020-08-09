@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Aug 2020 23:02:08 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2020 22:56:44 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Redis</title>
+      <link>http://localhost:1313/post/redis/</link>
+      <pubDate>Sun, 09 Aug 2020 22:56:44 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/redis/</guid>
+      <description>Redis源码的笔记 之前看过Redis，最近Redis升6.0改动不小，重新review一下源码，边看边做一些注释，详见 https://github.com/qzqsmile/redis/tree/annotation-601 SDS部分 Redi</description>
     </item>
     
     <item>
@@ -42,10 +51,10 @@ It makes use of a variety of open source projects including:
     
     <item>
       <title>Microserver</title>
-      <link>http://localhost:1313/post/microserver/</link>
+      <link>http://localhost:1313/post/microservice/</link>
       <pubDate>Wed, 29 Jul 2020 22:59:13 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/microserver/</guid>
+      <guid>http://localhost:1313/post/microservice/</guid>
       <description>微服务的架构 以前应用都是比较小的规模，可以单体开发。但是当规模上来以后，不同的人负责不同的模块，这时相互之间的耦合会很复杂，如果仍采用单体应</description>
     </item>
     
