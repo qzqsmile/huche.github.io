@@ -48,7 +48,7 @@
 <meta itemprop="description" content="Redis源码的笔记 之前看过Redis，最近Redis升6.0改动不小，重新review一下源码，边看边做一些注释，详见 https://github.com/qzqsmile/redis/tree/annotation-601 SDS部分 Redi">
 <meta itemprop="datePublished" content="2020-08-09T22:56:44&#43;08:00" />
 <meta itemprop="dateModified" content="2020-08-09T22:56:44&#43;08:00" />
-<meta itemprop="wordCount" content="351">
+<meta itemprop="wordCount" content="685">
 
 
 
@@ -187,12 +187,32 @@ Redis用来存字符串的数据结构。这个结构被作者领出来准备做
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">sdshdr8 len仅仅是8bit仅能存放256长度的字符，而sdshr16则是uint16,可以存放65536长度的字符
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">
+sdshdr8 len仅仅是8bit仅能存放256长度的字符，而sdshr16则是uint16,可以存放65536长度的字符
+
+2. hashtable
+   redis的hash比较有特点的设计在于rehash的那部分，因为redis作为一个高性能的KV缓存。其中当hash表内存不足时，重新分配内存进行rehash的过程会造成客户端卡顿的情况. &lt;br&gt;
+   为了解决这个问题，redis采取了渐进式hash的处理方式。所谓渐进式hash主要是在set 以及 get操作时，判断其是否在rehash的状态，如果是的话则进行小批量的搬运操作。
+   渐进式hash主要在两个地方进行相应的action。在hashtable里有个rehashindex的变量。用于存储搬运的位置。
+   同时渐进式hash还在redis空闲时进行搬运，但是此处搬运的刻度不再是每次搬运几个slot这样，而是每次搬运多久，比如redis6里每次搬运1ms。
+
+
+
 
    </code></pre></td></tr></table>
 </div>
