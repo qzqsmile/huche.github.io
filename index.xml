@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 09 Aug 2020 22:56:44 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 12 Aug 2020 23:17:04 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Mysql45讲笔记</title>
+      <link>http://localhost:1313/post/mysql/</link>
+      <pubDate>Wed, 12 Aug 2020 23:17:04 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/mysql/</guid>
+      <description>这里主要列出的是极客时间Mysql45讲的思维脑图的笔记。 Mysql是如何执行的。</description>
     </item>
     
     <item>

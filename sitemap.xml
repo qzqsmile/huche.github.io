@@ -10,14 +10,21 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2020-08-09T22:56:44+08:00</lastmod>
+    <lastmod>2020-08-12T23:17:04+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/mysql/</loc>
+    <lastmod>2020-08-12T23:17:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2020-08-09T22:56:44+08:00</lastmod>
+    <lastmod>2020-08-12T23:17:04+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
