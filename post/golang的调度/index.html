@@ -48,7 +48,7 @@
 <meta itemprop="description" content="Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统">
 <meta itemprop="datePublished" content="2020-08-05T23:02:08+08:00" />
 <meta itemprop="dateModified" content="2020-08-05T23:02:08+08:00" />
-<meta itemprop="wordCount" content="455">
+<meta itemprop="wordCount" content="479">
 
 
 
@@ -151,6 +151,8 @@
 <li>m:n 相对合理 <!-- raw HTML omitted -->
 很显然最为合理的调度方式极为m:n。同时golang为了优化局部性和锁的问题。在线程和协程之间又引入了P，即golang的GMP协程调度模型。</li>
 </ul>
+<p><img src="/gmp.jpg" alt="image"></p>
+<p>其中P和M一一绑定， g则是每个goroutine</p>
 
     </div>
 
