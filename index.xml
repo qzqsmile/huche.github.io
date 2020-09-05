@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 12 Aug 2020 23:17:04 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Sep 2020 23:03:51 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -23,11 +23,20 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
-      <title>Mysql45讲笔记</title>
-      <link>http://localhost:1313/post/mysql/</link>
+      <title>Mysql45讲笔记2</title>
+      <link>http://localhost:1313/post/mysql2/</link>
+      <pubDate>Sat, 05 Sep 2020 23:03:51 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/mysql2/</guid>
+      <description>如何保证高可用性 切换点怎么缺点 如何判断mysql是否可用</description>
+    </item>
+    
+    <item>
+      <title>Mysql45讲笔记1</title>
+      <link>http://localhost:1313/post/mysql1/</link>
       <pubDate>Wed, 12 Aug 2020 23:17:04 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/mysql/</guid>
+      <guid>http://localhost:1313/post/mysql1/</guid>
       <description>这里主要列出的是极客时间Mysql45讲的思维脑图的笔记。 Mysql是如何执行的。 Mysql的日志系统 事务隔离，为何你的事务看不见 ~5 索引相关</description>
     </item>
     
