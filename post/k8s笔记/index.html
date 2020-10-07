@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,23 +39,23 @@
 
 
 <meta property="og:title" content="K8s笔记" />
-<meta property="og:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，" />
+<meta property="og:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/k8s%E7%AC%94%E8%AE%B0/" />
 <meta property="article:published_time" content="2020-07-13T23:39:29+08:00" />
 <meta property="article:modified_time" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="name" content="K8s笔记">
-<meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，">
+<meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29+08:00" />
-<meta itemprop="wordCount" content="1649">
+<meta itemprop="wordCount" content="1976">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="K8s笔记"/>
-<meta name="twitter:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 Pod Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，"/>
+<meta name="twitter:description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -136,6 +136,7 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
   <ul>
+    <li><a href="#kubeadm-集群的安装">kubeadm 集群的安装</a></li>
     <li><a href="#pod">Pod</a></li>
     <li><a href="#replication-probe">replication, probe</a></li>
     <li><a href="#service">Service</a></li>
@@ -154,6 +155,23 @@
 </div>
     <div class="post-content">
       <p>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪</p>
+<h2 id="kubeadm-集群的安装">kubeadm 集群的安装</h2>
+<p>kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的一点就是国内把很多安装源给block了。所以利用kubeadm按照k8s官方教程来安装其实是行不通的。这里我鼓弄了一天才搞好，主要的精力都花在各种替换软件源上边了。
+这里简单记录下需要替换的源</p>
+<ol>
+<li>替换ubuntu的软件源
+<a href="https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/">https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/</a>
+ubuntu的软件源其实没有被block，但是出于速度的考虑，还是替换下比较好。</li>
+<li>安装docker&amp;替换docker的软件源
+<a href="https://www.cnblogs.com/LUA123/p/11401962.html">https://www.cnblogs.com/LUA123/p/11401962.html</a>
+我这边使用docker pull 镜像有点问题。换了阿里的源就好了</li>
+<li>安装kubeadm
+<a href="https://www.jianshu.com/p/9540f8e3be34">https://www.jianshu.com/p/9540f8e3be34</a>
+这里对源key的操作值得注意，即执行
+curl -s <a href="https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg">https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg</a> | sudo apt-key add -</li>
+<li>最后的安装步骤可以参照zhihu的这篇，最后再在各个node上执行下kubeadm join命令即可
+<a href="https://zhuanlan.zhihu.com/p/46341911">https://zhuanlan.zhihu.com/p/46341911</a></li>
+</ol>
 <h2 id="pod">Pod</h2>
 <pre><code>Pods是K8s调度的最小单元， 这里经常会有疑问的是，为什么我们需要Pod，而不是以container作为最小的调度单位。主要原因有两点：
 1. 因为某些程序需要多个进程进行协同进行功能，换一句话说就是某些program需要多进程来实现。但是container的设计初衷则是就是为了单进程的。如果在container中强行利用fork实现多进程，对于fork出来的进程其实是没法进行管理的。（这里略有疑惑）
