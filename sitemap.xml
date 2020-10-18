@@ -10,20 +10,27 @@
   
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2020-09-05T23:03:51+08:00</lastmod>
+    <lastmod>2020-10-18T22:39:54+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
-    <loc>http://localhost:1313/post/mysql2/</loc>
-    <lastmod>2020-09-05T23:03:51+08:00</lastmod>
+    <loc>http://localhost:1313/post/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</loc>
+    <lastmod>2020-10-18T22:39:54+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/post/</loc>
+    <lastmod>2020-10-18T22:39:54+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/mysql2/</loc>
     <lastmod>2020-09-05T23:03:51+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

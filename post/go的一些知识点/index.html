@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Even - A super concise theme for Hugo</title>
+  <title>Go的一些知识点 - Even - A super concise theme for Hugo</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="内存分配 微小对象，size &amp;lt; 16B 一般小对象， 16 bytes &amp;lt; size &amp;lt;= 32k 大对象 size &amp;gt; 32k 对应的分配方式分三种： tinny allocations (size &amp;lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.74.3 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/" />
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
-  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
+<link rel="canonical" href="http://localhost:1313/post/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,16 +38,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Even - A super concise theme for Hugo" />
-<meta property="og:description" content="Hugo theme even example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:updated_time" content="2020-10-18T22:39:54+08:00" />
-<meta itemprop="name" content="Even - A super concise theme for Hugo">
-<meta itemprop="description" content="Hugo theme even example site.">
+<meta property="og:title" content="Go的一些知识点" />
+<meta property="og:description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" />
+<meta property="article:published_time" content="2020-10-18T22:39:54+08:00" />
+<meta property="article:modified_time" content="2020-10-18T22:39:54+08:00" />
+<meta itemprop="name" content="Go的一些知识点">
+<meta itemprop="description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size">
+<meta itemprop="datePublished" content="2020-10-18T22:39:54+08:00" />
+<meta itemprop="dateModified" content="2020-10-18T22:39:54+08:00" />
+<meta itemprop="wordCount" content="494">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Even - A super concise theme for Hugo"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:title" content="Go的一些知识点"/>
+<meta name="twitter:description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -113,116 +119,85 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/net/">Net</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-04 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      计算机网络的一些知识点总结 TCP/IP相关 TCP/IP的建立前期是三次握手，后期是四次挥手。其这种机制主要解决了超时和重传的问题。这两个问题
-    </div>
-    <div class="read-more">
-      <a href="/post/net/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Go的一些知识点</h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/microservice/">Microserver</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-29 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      微服务的架构 以前应用都是比较小的规模，可以单体开发。但是当规模上来以后，不同的人负责不同的模块，这时相互之间的耦合会很复杂，如果仍采用单体应
-    </div>
-    <div class="read-more">
-      <a href="/post/microservice/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+      <div class="post-meta">
+        <span class="post-time"> 2020-10-18 </span>
+        
+        
+      </div>
+    </header>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/k8s%E7%AC%94%E8%AE%B0/">K8s笔记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-13 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的
-    </div>
-    <div class="read-more">
-      <a href="/post/k8s%E7%AC%94%E8%AE%B0/" class="read-more-link">阅读更多</a>
-    </div>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
   </div>
-</article>
+</div>
+    <div class="post-content">
+      <ol>
+<li>内存分配</li>
+</ol>
+<ul>
+<li>微小对象，size &lt; 16B</li>
+<li>一般小对象， 16 bytes &lt; size &lt;= 32k</li>
+<li>大对象 size &gt; 32k <!-- raw HTML omitted -->
+对应的分配方式分三种：</li>
+<li>tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。</li>
+<li>small allocations ( size &lt;= 32k) 正常分配；首先通过计算使用的大小规格，然后使用 mcache 中对应大小规格的块分配</li>
+<li>large allocations (size &gt; 32k) 大对象分配；直接通过mheap分配。这些大对象的申请是以一个全局锁为代价的，因此任何给定的时间点只能同时供一个 P 申请。
+其中tiny allocation主要是利用mcache进行分配，mcache里默认有个一块大小为16B的内存供其进行分配使用，当这块内存完全占用后。会走small allocation <!-- raw HTML omitted -->
+对于small allocations是golang分配最复杂的一部分，这里仅简单梳理下分配内存的流程，对于申请size 为n的内存其分配步骤如下。<!-- raw HTML omitted -->
+<ol>
+<li>获取当前的mcache</li>
+<li>根据size算出合适的class ID</li>
+<li>从mache的alloc[class]中找出可用的span</li>
+<li>如果mache没有可用的span，从mcentral中申请一个span加入</li>
+<li>如果mcentral也没有可用的，则从mheap中申请一个加入</li>
+<li>从span中返回对象地址。
+large allocations相对简单的多，直接从mheap上分配。</li>
+</ol>
+</li>
+</ul>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/zk/">Zookeeper的一些常用应用场景</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-23 </span>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-10-18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
       
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      zookeeper可以简单认为是一个KV系统，它与其它的一些存储组件。比如 Mysql， Redis 集群的区别。个人认为主要集中在以下几个方面 由于Zab
-    </div>
-    <div class="read-more">
-      <a href="/post/zk/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/go_memory_translate/">Go_memory_translate</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-23 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      https://medium.com/a-journey-with-go/go-memory-management-and-allocation-a7396d430f44 Go语言的内存管理是由标准库完成的，？？。 即使开发者不需要与内存管理打交道，go语言的内存管理仍然做了很多优化，并且有一些很有趣的概念。 在
-    </div>
-    <div class="read-more">
-      <a href="/post/go_memory_translate/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">上一页</span>
-      </a>
-    <a class="next" href="/page/3/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-  </nav>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/mysql2/">
+            <span class="next-text nav-default">Mysql45讲笔记2</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>

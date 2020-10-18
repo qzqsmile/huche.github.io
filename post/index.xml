@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 05 Sep 2020 23:03:51 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2020 22:39:54 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go的一些知识点</title>
+      <link>http://localhost:1313/post/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <pubDate>Sun, 18 Oct 2020 22:39:54 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <description>内存分配 微小对象，size &amp;lt; 16B 一般小对象， 16 bytes &amp;lt; size &amp;lt;= 32k 大对象 size &amp;gt; 32k 对应的分配方式分三种： tinny allocations (size &amp;lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size</description>
+    </item>
     
     <item>
       <title>Mysql45讲笔记2</title>
