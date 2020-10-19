@@ -48,7 +48,7 @@
 <meta itemprop="description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size">
 <meta itemprop="datePublished" content="2020-10-18T22:39:54+08:00" />
 <meta itemprop="dateModified" content="2020-10-18T22:39:54+08:00" />
-<meta itemprop="wordCount" content="494">
+<meta itemprop="wordCount" content="583">
 
 
 
@@ -162,6 +162,10 @@ large allocations相对简单的多，直接从mheap上分配。</li>
 </ol>
 </li>
 </ul>
+<ol start="2">
+<li>写屏障
+golang的垃圾回收是基于标记清除的技术实现的，该技术都会有一个明显的缺陷就是STW。即Stop the world.即程序暂停，进行内存回收，写屏障即是消除此种影响的一种技术。</li>
+</ol>
 
     </div>
 
