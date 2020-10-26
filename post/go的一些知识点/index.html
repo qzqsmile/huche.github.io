@@ -48,7 +48,7 @@
 <meta itemprop="description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size">
 <meta itemprop="datePublished" content="2020-10-18T22:39:54+08:00" />
 <meta itemprop="dateModified" content="2020-10-18T22:39:54+08:00" />
-<meta itemprop="wordCount" content="1010">
+<meta itemprop="wordCount" content="1016">
 
 
 
@@ -208,6 +208,12 @@ go并木有实现过这种方法，满足的是弱三色请求。</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>优点1.结束不用STW 缺点 1.刚开始需要STW，进行保护</p>
+<ol start="3">
+<li>nil <!-- raw HTML omitted -->
+to do</li>
+<li>unsafe.pointer <!-- raw HTML omitted -->
+to do</li>
+</ol>
 
     </div>
 
