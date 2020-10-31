@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>K8s总体架构流程 - Even - A super concise theme for Hugo</title>
+  <title>K8s每讲笔记 - Even - A super concise theme for Hugo</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="总结一些中k8s的架构各个部分的功能 总体结构 etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="主要记录一下即可时间中每一讲的知识要点。 容器的编排 10.为什么需要Pod 因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.74.3 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/post/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/" />
+<link rel="canonical" href="http://localhost:1313/post/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,24 +38,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="K8s总体架构流程" />
-<meta property="og:description" content="总结一些中k8s的架构各个部分的功能 总体结构 etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件" />
+<meta property="og:title" content="K8s每讲笔记" />
+<meta property="og:description" content="主要记录一下即可时间中每一讲的知识要点。 容器的编排 10.为什么需要Pod 因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://localhost:1313/post/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/" />
-<meta property="article:published_time" content="2020-10-24T23:23:12+08:00" />
-<meta property="article:modified_time" content="2020-10-24T23:23:12+08:00" />
-<meta itemprop="name" content="K8s总体架构流程">
-<meta itemprop="description" content="总结一些中k8s的架构各个部分的功能 总体结构 etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件">
-<meta itemprop="datePublished" content="2020-10-24T23:23:12+08:00" />
-<meta itemprop="dateModified" content="2020-10-24T23:23:12+08:00" />
-<meta itemprop="wordCount" content="437">
+<meta property="og:url" content="http://localhost:1313/post/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-10-31T21:15:24+08:00" />
+<meta property="article:modified_time" content="2020-10-31T21:15:24+08:00" />
+<meta itemprop="name" content="K8s每讲笔记">
+<meta itemprop="description" content="主要记录一下即可时间中每一讲的知识要点。 容器的编排 10.为什么需要Pod 因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就">
+<meta itemprop="datePublished" content="2020-10-31T21:15:24+08:00" />
+<meta itemprop="dateModified" content="2020-10-31T21:15:24+08:00" />
+<meta itemprop="wordCount" content="291">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="K8s总体架构流程"/>
-<meta name="twitter:description" content="总结一些中k8s的架构各个部分的功能 总体结构 etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件"/>
+<meta name="twitter:title" content="K8s每讲笔记"/>
+<meta name="twitter:description" content="主要记录一下即可时间中每一讲的知识要点。 容器的编排 10.为什么需要Pod 因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,10 +122,10 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">K8s总体架构流程</h1>
+      <h1 class="post-title">K8s每讲笔记</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2020-10-24 </span>
+        <span class="post-time"> 2020-10-31 </span>
         
         
       </div>
@@ -138,19 +138,20 @@
   </div>
 </div>
     <div class="post-content">
-      <p>总结一些中k8s的架构各个部分的功能</p>
-<p><img src="/k8s_1.png" alt="image"> <!-- raw HTML omitted -->
-总体结构</p>
-<p>etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件，其中的描述信息都会存取其中
-API Server: 与Etcd打交道的的模块，一切访问
-ectd的操作都要经过它
-Scheduler：简单来讲，就是为Pod选定Node的模块，因为调度时需要考虑一些设定的规则，比如node-selector等。就是在这个部分实现的
-Control-Manager: 监控ectd的yaml文件是否变化，并采取相应的操作。不同的模块其实对应不同的control-manager，比如deployment对应自己的controller，因为不同的某块需要的manger策略其实不相同。
-kube-proxy: 一个proxy，之前通信都是用经过iptables-&gt;kubeproxy-&gt;pods 这样。但是后来其实不用经过kubeproxy了。
-kubelet: 各个node里直接操作container的module</p>
-<p>如下这个kubelet到创建contrainer的流程也很有参考意义</p>
-<p><img src="/k8s_2.png" alt="image"> <!-- raw HTML omitted -->
-具体流程</p>
+      <p>主要记录一下即可时间中每一讲的知识要点。</p>
+<p>容器的编排 <!-- raw HTML omitted -->
+10.为什么需要Pod <!-- raw HTML omitted -->
+因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就面临着一个问题，如何把这些进程调度到一台机器上。很显然有两种思路,</p>
+<ul>
+<li>依然对容器进行调度，在算法层面解决调度到一台机器上的问题</li>
+<li>将这些容器看做一个整体 <!-- raw HTML omitted --></li>
+</ul>
+<p>K8s就是采取的第二种，即把它看成一个Pod的module <!-- raw HTML omitted -->
+另一个原因则是，由于Pod里的容器共享了某些资源，比如network namespace. 这样可以更好采用sidecar的方式实现容器设计的模式。即在主容器外，设计一些辅助容器实现一些辅助的功能。<!-- raw HTML omitted -->
+这里提一句，现在大火的Isito其实就是利用这种设计模式实现的。</p>
+<ol start="11">
+<li></li>
+</ol>
 
     </div>
 
@@ -162,7 +163,7 @@ kubelet: 各个node里直接操作container的module</p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2020-10-24
+        2020-10-31
         
     </span>
   </p>
@@ -172,13 +173,9 @@ kubelet: 各个node里直接操作container的module</p>
 <footer class="post-footer">
       
       <nav class="post-nav">
-        <a class="prev" href="/post/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">K8s每讲笔记</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/go%E7%9A%84sync%E5%BA%93%E7%9A%84%E6%80%BB%E7%BB%93/">
-            <span class="next-text nav-default">Go的sync库的总结</span>
+        
+        <a class="next" href="/post/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/">
+            <span class="next-text nav-default">K8s总体架构流程</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>

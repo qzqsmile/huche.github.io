@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 24 Oct 2020 23:23:12 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2020 21:15:24 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s每讲笔记</title>
+      <link>http://localhost:1313/post/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 31 Oct 2020 21:15:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/</guid>
+      <description>主要记录一下即可时间中每一讲的知识要点。 容器的编排 10.为什么需要Pod 因为很多功能是由一些进程组来实现的，而容器又是一种单进程模型，那么就</description>
+    </item>
     
     <item>
       <title>K8s总体架构流程</title>

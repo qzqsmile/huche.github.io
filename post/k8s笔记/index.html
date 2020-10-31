@@ -48,7 +48,7 @@
 <meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29+08:00" />
-<meta itemprop="wordCount" content="1976">
+<meta itemprop="wordCount" content="2032">
 
 
 
@@ -247,6 +247,10 @@ EmptyDir： 用于多个Container之间共享的类型</p>
 <p>用于存放程序配置的component.其中Secrets中会Base64加密</p>
 <h2 id="疑问点">疑问点</h2>
 <p>Service与Pod之间的mapping关系,如何创建一个nodeport</p>
+<ol>
+<li>k8s为何呀swap off
+主要是想不到一定要swap off的场景，就没设计进去。默认没有swapoff可以简化设计。</li>
+</ol>
 
     </div>
 
