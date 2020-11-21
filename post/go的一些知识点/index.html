@@ -48,7 +48,7 @@
 <meta itemprop="description" content="内存分配 微小对象，size &lt; 16B 一般小对象， 16 bytes &lt; size &lt;= 32k 大对象 size &gt; 32k 对应的分配方式分三种： tinny allocations (size &lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size">
 <meta itemprop="datePublished" content="2020-10-18T22:39:54+08:00" />
 <meta itemprop="dateModified" content="2020-10-18T22:39:54+08:00" />
-<meta itemprop="wordCount" content="1193">
+<meta itemprop="wordCount" content="1432">
 
 
 
@@ -207,7 +207,19 @@ go并木有实现过这种方法，满足的是弱三色请求。</p>
    <span class="o">*</span><span class="n">slot</span> <span class="o">=</span> <span class="n">ptr</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>优点1.结束不用STW 缺点 1.刚开始需要STW，进行保护</p>
+</div><p>优点: <!-- raw HTML omitted -->
+1.结束不用STW <!-- raw HTML omitted -->
+缺点:<!-- raw HTML omitted -->
+1. 开始时要启动STW，扫描全栈进行保护，因为栈上默认不进行标记和清除的操作<!-- raw HTML omitted -->
+2. 最后可能会写元素应该回收到没有回收 <!-- raw HTML omitted -->
+混合写屏障:<!-- raw HTML omitted -->
+其实是删除屏障+写屏障的结合。这里考虑删除写屏障刚开始的需要STW的情形，为了减少这部分STW的时间。混合写屏障改为并发的进行栈扫描，但是为了防止一个不该回收的对象回收了，这里加上了写屏障的操作，这样就使的其可以混合扫描。
+具体例子，可见<a href="https://liqingqiya.github.io/golang/gc/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/%E5%86%99%E5%B1%8F%E9%9A%9C/2020/07/24/gc5.html">此文</a>
+所以其优缺点如下:
+优:
+1. 不用STW，即使刚开始的扫栈也是并发执行的。
+缺点：
+1. 回收精度与删除写屏障相似，有些本可以回收的内存可能仍回收不了。</p>
 <ol start="3">
 <li>
 <p>nil <!-- raw HTML omitted -->
