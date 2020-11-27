@@ -23,12 +23,12 @@ It makes use of a variety of open source projects including:
     </item>
     
     <item>
-      <title>Azure大数据平台的搭建</title>
+      <title>Azure上BI系统的搭建</title>
       <link>http://localhost:1313/post/azure%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Fri, 13 Nov 2020 23:16:53 +0800</pubDate>
       
       <guid>http://localhost:1313/post/azure%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
-      <description>最近因为业务需要，尝试搭建着一些大数据平台。发现相对于纯手工从头搞起，还是使用Azure上的Service来搭建来的香。 以上是Azure最基</description>
+      <description>最近因为业务需要，尝试搭建着一些大数据平台。发现相对于纯手工从头搞起，还是使用Azure上的Service来搭建来的香。 以上是Azure推荐</description>
     </item>
     
     <item>
