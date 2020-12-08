@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 13 Nov 2020 23:16:53 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Dec 2020 22:46:35 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>K8s网络</title>
+      <link>http://localhost:1313/post/k8s%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Tue, 08 Dec 2020 22:46:35 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s%E7%BD%91%E7%BB%9C/</guid>
+      <description>零星知识点： linux下 route命令会列出一系列的路由list。有匹配地址的走匹配地址，没有的走网关。如果都没有就报错。网关默认如果配置多</description>
+    </item>
     
     <item>
       <title>Azure上BI系统的搭建</title>
