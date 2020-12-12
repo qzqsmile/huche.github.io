@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Dec 2020 22:46:35 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 12 Dec 2020 21:56:57 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>K8s desgin pattern读书笔记</title>
+      <link>http://localhost:1313/post/k8s_desgin_pattern%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Sat, 12 Dec 2020 21:56:57 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/k8s_desgin_pattern%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
+      <description>Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的</description>
     </item>
     
     <item>

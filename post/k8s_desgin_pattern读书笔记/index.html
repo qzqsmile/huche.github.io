@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Even - A super concise theme for Hugo</title>
+  <title>K8s desgin pattern读书笔记 - Even - A super concise theme for Hugo</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="Hugo theme even example site." /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.74.3 with theme even" />
 
 
-<link rel="canonical" href="http://localhost:1313/" />
-  <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
-  <link href="http://localhost:1313/index.xml" rel="feed" type="application/rss+xml" title="Even - A super concise theme for Hugo" />
+<link rel="canonical" href="http://localhost:1313/post/k8s_desgin_pattern%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,16 +38,24 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Even - A super concise theme for Hugo" />
-<meta property="og:description" content="Hugo theme even example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://localhost:1313/" />
-<meta property="og:updated_time" content="2020-12-12T21:56:57+08:00" />
-<meta itemprop="name" content="Even - A super concise theme for Hugo">
-<meta itemprop="description" content="Hugo theme even example site.">
+<meta property="og:title" content="K8s desgin pattern读书笔记" />
+<meta property="og:description" content="Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/k8s_desgin_pattern%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" />
+<meta property="article:published_time" content="2020-12-12T21:56:57+08:00" />
+<meta property="article:modified_time" content="2020-12-12T21:56:57+08:00" />
+<meta itemprop="name" content="K8s desgin pattern读书笔记">
+<meta itemprop="description" content="Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的">
+<meta itemprop="datePublished" content="2020-12-12T21:56:57+08:00" />
+<meta itemprop="dateModified" content="2020-12-12T21:56:57+08:00" />
+<meta itemprop="wordCount" content="284">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Even - A super concise theme for Hugo"/>
-<meta name="twitter:description" content="Hugo theme even example site."/>
+<meta name="twitter:title" content="K8s desgin pattern读书笔记"/>
+<meta name="twitter:description" content="Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -113,116 +119,81 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          <section id="posts" class="posts">
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang%E7%9A%84%E8%B0%83%E5%BA%A6/">Golang的调度</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-05 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统
-    </div>
-    <div class="read-more">
-      <a href="/post/golang%E7%9A%84%E8%B0%83%E5%BA%A6/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">K8s desgin pattern读书笔记</h1>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/net/">Net</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-08-04 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      计算机网络的一些知识点总结 TCP/IP相关 TCP/IP的建立前期是三次握手，后期是四次挥手。其这种机制主要解决了超时和重传的问题。这两个问题
-    </div>
-    <div class="read-more">
-      <a href="/post/net/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
+      <div class="post-meta">
+        <span class="post-time"> 2020-12-12 </span>
+        
+        
+      </div>
+    </header>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/microservice/">Microserver</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-29 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      微服务的架构 以前应用都是比较小的规模，可以单体开发。但是当规模上来以后，不同的人负责不同的模块，这时相互之间的耦合会很复杂，如果仍采用单体应
-    </div>
-    <div class="read-more">
-      <a href="/post/microservice/" class="read-more-link">阅读更多</a>
-    </div>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents"></nav>
   </div>
-</article>
+</div>
+    <div class="post-content">
+      <p>Red Hat k8s 公开书的读书笔记</p>
+<p>主要总结PartII,因为Part I都比较基础。</p>
+<ol>
+<li>
+<p>Batch Job
+Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的服务
+Solution: 使用K8s里边Kind:Job</p>
+</li>
+<li>
+<p>Periodic Job
+Problem: 需要周期性运行的程序，比如说采集数据的Pod
+Solution: 使用K8s里边Kind:CronJob。在Yaml文件里可以设置相应Periodic的周期。</p>
+</li>
+<li>
+<p>Deamon Service
+Porblem: 与Deamon Process概念类似，守护Service。
+Solution: 是用DeamonSet的Kind。这里可以想到的是，为了保证 Deamon Service的 reliability。最好的方法就是每个Node上运行一个Pod，实际DeamonSet也是这么实现的</p>
+</li>
+<li></li>
+</ol>
 
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/k8s%E7%AC%94%E8%AE%B0/">K8s笔记</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-07-13 </span>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">olOwOlo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-12-12
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
       
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的
-    </div>
-    <div class="read-more">
-      <a href="/post/k8s%E7%AC%94%E8%AE%B0/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/zk/">Zookeeper的一些常用应用场景</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-06-23 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      zookeeper可以简单认为是一个KV系统，它与其它的一些存储组件。比如 Mysql， Redis 集群的区别。个人认为主要集中在以下几个方面 由于Zab
-    </div>
-    <div class="read-more">
-      <a href="/post/zk/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-
-    </section>
-  
-  <nav class="pagination">
-    <a class="prev" href="/page/2/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">上一页</span>
-      </a>
-    <a class="next" href="/page/4/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-  </nav>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/k8s%E7%BD%91%E7%BB%9C/">
+            <span class="next-text nav-default">K8s网络</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
+
+  
+
+  
 
       </div>
     </main>
