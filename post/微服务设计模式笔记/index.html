@@ -48,7 +48,7 @@
 <meta itemprop="description" content="读书的技术书一般都是代码居多，也习惯了这个套路。几个月前读这书，看了几章发现都是叙述性的内容，仅有的一些example还都是以Java居多就">
 <meta itemprop="datePublished" content="2020-12-15T23:16:06+08:00" />
 <meta itemprop="dateModified" content="2020-12-15T23:16:06+08:00" />
-<meta itemprop="wordCount" content="664">
+<meta itemprop="wordCount" content="926">
 
 
 
@@ -154,6 +154,14 @@
 分布式事务我之前的了解主要有2PC，TCC这些编程范式，本章比较让我感兴趣的地方在于引入了saga这个分布式事务的编程范式。<!-- raw HTML omitted -->
 2PC这种分布式事务的处理方法除了比较简单，其实没啥优点了。
 （带补全）</p>
+<p>chapter8 <!-- raw HTML omitted -->
+主要谈了为何使用API网关的必要性。对于微服务的架构而言，如果不使用网关，那个对每个微服务分别调度一次。那么会存在许多问题，比如:</p>
+<ul>
+<li>某个微服务的component升级系统，那么就要更新客户端。</li>
+<li>比如影响速度，因为客户端到微服务的调用网络时延比较高 <!-- raw HTML omitted --></li>
+</ul>
+<p>所以这里添加了网关这一层，同时可以在网关这一层上实现一些边缘功能，比如auth认证，Load balance等等功能。<!-- raw HTML omitted --></p>
+<p>这章比较有意思的是引入了GraphQL这种API设计模式来解决API组合的问题。API网关层不要返回全部的数据，也不需要针对不同的API，做相应的API组合的编排。</p>
 
     </div>
 
