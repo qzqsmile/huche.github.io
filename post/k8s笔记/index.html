@@ -48,7 +48,7 @@
 <meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29+08:00" />
-<meta itemprop="wordCount" content="3045">
+<meta itemprop="wordCount" content="3226">
 
 
 
@@ -276,6 +276,10 @@ k8s中相对于经典的RBAC有一点不一样的地方即是多了一个RoleBin
 AutoScale是本章主题。主要介绍了Pod的三个方面的参数进行AutoScale
 CPU, Memory, QPS.具体是一些详细参数的配置。<!-- raw HTML omitted -->
 有一点比较让我感兴趣的是，对于使用一些云计算提供商的计算服务，其可以实现AutoScale Node的功能。<!-- raw HTML omitted --></p>
+<p>chapter16 <!-- raw HTML omitted -->
+一些node的taint以及affinity之类的选项。主要作用是控制Pod的调度，具体估计要实际应用才能真正理解</p>
+<p>chapter17 <!-- raw HTML omitted -->
+一些k8s开发的最佳实践，其中Pod的shutdown流程可以了解一些。K8s先发送SigTerm给container，使其最好可以优雅的结束，如果不行的话，再发送sigkill的信号给container，强行shutdown。</p>
 
     </div>
 
