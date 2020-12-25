@@ -48,7 +48,7 @@
 <meta itemprop="description" content="这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的">
 <meta itemprop="datePublished" content="2020-07-13T23:39:29+08:00" />
 <meta itemprop="dateModified" content="2020-07-13T23:39:29+08:00" />
-<meta itemprop="wordCount" content="3226">
+<meta itemprop="wordCount" content="3388">
 
 
 
@@ -280,6 +280,9 @@ CPU, Memory, QPS.具体是一些详细参数的配置。<!-- raw HTML omitted --
 一些node的taint以及affinity之类的选项。主要作用是控制Pod的调度，具体估计要实际应用才能真正理解</p>
 <p>chapter17 <!-- raw HTML omitted -->
 一些k8s开发的最佳实践，其中Pod的shutdown流程可以了解一些。K8s先发送SigTerm给container，使其最好可以优雅的结束，如果不行的话，再发送sigkill的信号给container，强行shutdown。</p>
+<p>chapter18 <!-- raw HTML omitted -->
+本章主要讲了CRD以及Service Catalog。其中CRD主要是用户自定义的一种类型，定义起来比较方便，但是编写controller会比较麻烦。其Controller的主要原理就是监听API Server的变化，所有的变化进入一个队列当中进行处理。<!-- raw HTML omitted -->
+(Service Catalog待填坑，只知道是实现pod连接外面请求的)</p>
 
     </div>
 
