@@ -48,7 +48,7 @@
 <meta itemprop="description" content="Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的">
 <meta itemprop="datePublished" content="2020-12-12T21:56:57+08:00" />
 <meta itemprop="dateModified" content="2020-12-12T21:56:57+08:00" />
-<meta itemprop="wordCount" content="704">
+<meta itemprop="wordCount" content="874">
 
 
 
@@ -156,10 +156,22 @@ Solution: 使用K8s里边Kind:CronJob。在Yaml文件里可以设置相应Period
 Porblem: 与Deamon Process概念类似，守护Service。
 Solution: 是用DeamonSet的Kind。这里可以想到的是，为了保证 Deamon Service的 reliability。最好的方法就是每个Node上运行一个Pod，实际DeamonSet也是这么实现的</p>
 </li>
+<li>
+<p>signleton service <!-- raw HTML omitted -->
+单列模式，其实总结起来就是一句话。对于K8s而言，要求不严格的单列模式使用replicaset，并设置replica=1(因为某些特殊时刻可能不是单列)。严格的话就要上stateful</p>
+</li>
+<li>
+<p>stateful service <!-- raw HTML omitted -->
+要使其成为stateful service。其本质就是使的pod的名字唯一，再重新launch的情形下也是。</p>
+</li>
+<li>
+<p>service discovery <!-- raw HTML omitted -->
+总结了下集中service的主要用法。</p>
+</li>
 </ol>
 <p>Structural Patterns <!-- raw HTML omitted -->
 以下四种都是一种组合方式的K8s Desgin Pattern。主要思路都是在main container外组合另一个 container 用以实现更为强大的功能。</p>
-<ol start="14">
+<ol>
 <li>
 <p>Init Container <!-- raw HTML omitted -->
 Problem: 在主Container启动之前需要进行一些初始化和设置
