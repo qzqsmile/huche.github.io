@@ -9,15 +9,22 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/post/courrency_in_go%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-12-30T23:06:35+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2020-12-15T23:16:06+08:00</lastmod>
+    <lastmod>2020-12-30T23:06:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://localhost:1313/post/</loc>
-    <lastmod>2020-12-15T23:16:06+08:00</lastmod>
+    <lastmod>2020-12-30T23:06:35+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
