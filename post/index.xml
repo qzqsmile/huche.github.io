@@ -35,7 +35,7 @@
       <pubDate>Sat, 12 Dec 2020 21:56:57 +0800</pubDate>
       
       <guid>http://localhost:1313/post/k8s_desgin_pattern%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</guid>
-      <description>Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。 Batch Job Problem: 有些程序只需要跑一次，不需要长期的运行，提供一种Service的</description>
+      <description>Red Hat k8s 公开书的读书笔记 主要总结PartII,因为Part I都比较基础。感觉这书有点笔记向，所谓的笔记向就是像作者自己做的笔记。这种书的一大特</description>
     </item>
     
     <item>
