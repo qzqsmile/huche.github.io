@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1~2 主要是引论以及CSP一些知识的介绍 ch3 go语言并发的一些库的应用。 包括 waitgroup,sync, syncrw, cond, pool, once channel, select总体介绍的比较基础.有个知识点比较有意思，我们">
 <meta itemprop="datePublished" content="2020-12-30T23:06:35+08:00" />
 <meta itemprop="dateModified" content="2020-12-30T23:06:35+08:00" />
-<meta itemprop="wordCount" content="142">
+<meta itemprop="wordCount" content="331">
 
 
 
@@ -145,6 +145,11 @@ go语言并发的一些库的应用。
 包括 waitgroup,sync, syncrw, cond, pool, once channel, select总体介绍的比较基础.<!-- raw HTML omitted -->
 有个知识点比较有意思，我们知道once.do只执行一次,但这里的一次并不是指的根据func的名字来确定的,而是指的do这个函数执行一次。举个例子来说 once.do(func1), once.do(func2)
 这其实算执行了两次</p>
+<p>ch4
+一些并发的concurrency pattern。
+刚开始提到的confinement这种控制并发的编程模式感觉比较tricky，有时也不好想到，本质应该是通过设计将并发修改的情况取消。<!-- raw HTML omitted -->
+方式goroutine leak这里提到的一个设计原则很关键，就是谁创建，谁销毁，这样就不会有泄露的问题了。<!-- raw HTML omitted -->
+or_这种方式如果不考虑不知道数量的情形下的话，也就是一个select的语法糖式的写法。<!-- raw HTML omitted --></p>
 
     </div>
 
