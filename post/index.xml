@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 30 Dec 2020 23:06:35 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2021 23:08:35 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Programming Kubernetes notes</title>
+      <link>http://localhost:1313/post/programming_kubernetes_notes/</link>
+      <pubDate>Sun, 17 Jan 2021 23:08:35 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/programming_kubernetes_notes/</guid>
+      <description>ch1 主要是一些overview式的介绍。如果你对k8s之前比较熟悉的话，很多内容都是重复的。对我而言，有以下几点有些启发。 本书提名k8s编程，</description>
+    </item>
     
     <item>
       <title>Courrency_in_go笔记</title>

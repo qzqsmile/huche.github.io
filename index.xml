@@ -6,7 +6,7 @@
     <description>Recent content on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 30 Dec 2020 23:06:35 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2021 23:08:35 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     
@@ -20,6 +20,15 @@
       <description>Hugo is a static site engine written in Go.
 It makes use of a variety of open source projects including:
  Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.</description>
+    </item>
+    
+    <item>
+      <title>Programming Kubernetes notes</title>
+      <link>http://localhost:1313/post/programming_kubernetes_notes/</link>
+      <pubDate>Sun, 17 Jan 2021 23:08:35 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/programming_kubernetes_notes/</guid>
+      <description>ch1 主要是一些overview式的介绍。如果你对k8s之前比较熟悉的话，很多内容都是重复的。对我而言，有以下几点有些启发。 本书提名k8s编程，</description>
     </item>
     
     <item>
