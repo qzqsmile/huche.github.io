@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Even - A super concise theme for Hugo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Jan 2021 23:08:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Jan 2021 23:15:30 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>一些认证的总结</title>
+      <link>http://localhost:1313/post/oauth2_jwt/</link>
+      <pubDate>Tue, 19 Jan 2021 23:15:30 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/oauth2_jwt/</guid>
+      <description>总结一些最近学到的一些认证的应用场景 JWT（Json web token) 它的出现主要是克服session认证的一些缺点。因为HTTP都是无状态的，所以HTT</description>
+    </item>
     
     <item>
       <title>Programming Kubernetes notes</title>
