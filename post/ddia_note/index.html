@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="olOwOlo" /><meta name="description" content="ch1 Three key criteria for data system. That&amp;rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2" /><meta name="keywords" content="Hugo, theme, even" />
+<meta name="author" content="olOwOlo" /><meta name="description" content="ch1 Three key criteria for data system. That&amp;rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何" /><meta name="keywords" content="Hugo, theme, even" />
 
 
 
@@ -39,23 +39,23 @@
 
 
 <meta property="og:title" content="DDIA 笔记" />
-<meta property="og:description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2" />
+<meta property="og:description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://localhost:1313/post/ddia_note/" />
 <meta property="article:published_time" content="2021-02-03T23:51:58+08:00" />
 <meta property="article:modified_time" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="name" content="DDIA 笔记">
-<meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2">
+<meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="25">
+<meta itemprop="wordCount" content="877">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="DDIA 笔记"/>
-<meta name="twitter:description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2"/>
+<meta name="twitter:description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -142,6 +142,29 @@
 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable.</p>
 <p>Maintainalbe means the data system is very easy to main by others.</p>
 <p>ch2 <!-- raw HTML omitted --></p>
+<p>这一章节主要总结数据模型的发展的问题。<!-- raw HTML omitted -->
+要想理解本章，最好先思考下如果是让我来设计，应该如何存储数据。
+就拿本章的linkedin来举例子，最为直接的想法就是将一个人的resume存成一个record。<!-- raw HTML omitted -->
+这种方法其实就是最原始的document module的思想，但是这种方法会有一些很难克服的弊端 <!-- raw HTML omitted --></p>
+<ul>
+<li>随着用户增长，数据量会急剧增长，因为冗余数据会非常多。比如所有的美国用户都会存美国这个字段</li>
+<li>Update一些公共的字段会很复杂，比如有个university的description需要更改，需要改所有该学校的学生的resume</li>
+<li>对并发支持会很差，应该数据大量聚集在一个table，所有的操作，比如search都会遍历该table。会导致热点集中<!-- raw HTML omitted --></li>
+</ul>
+<p>当然有缺点必定也有优点。</p>
+<ul>
+<li>对Scheme要求不严格</li>
+<li>更加简单，某些情形下可以简化代码</li>
+</ul>
+<p>为了克服以上的缺点，需要数据模型支持Join的操作，历史上有两个发展思路。</p>
+<ul>
+<li>network Model: 改模型虽然很符合人的逻辑，把相应的relattion都存下来，但是因为没有相应的约束(比如Relational Model里的Scheme)，当数据量大时，会导致这种relation存的异常复查，导致程序编写的困难。</li>
+<li>Relational model: 这种模型就不多提了，现在最流行的数据模型了。</li>
+</ul>
+<p>对于这两种模型，我的理解是Document Model是对写比较友好的数据模型，而Relational Model对读和Update比较友好。这里的友好指的是对数据的写入并不会做很多的限制以及处理以符合写入的需求。可以相对的符合数据原有的样子。<!-- raw HTML omitted -->
+因为相应的应用场景也比较清楚了，Document Model适合那些对Join需求没那么高的场景，并且不会修改的场景，比如写入一个Log信息用于分析。而有Join场景的应用则主要考虑Relation Model的数据模型。</p>
+<p>Query Language
+接下来作者又谈了谈Query Language，虽然作者用了不少篇幅在阐述这块，主要的想表达就是一个思想，的SQL这种语言是一种High Level的声明式语言，从而可以留给数据库以优化的空间。</p>
 
     </div>
 
