@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="877">
+<meta itemprop="wordCount" content="1206">
 
 
 
@@ -165,6 +165,9 @@ Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintai
 因为相应的应用场景也比较清楚了，Document Model适合那些对Join需求没那么高的场景，并且不会修改的场景，比如写入一个Log信息用于分析。而有Join场景的应用则主要考虑Relation Model的数据模型。</p>
 <p>Query Language
 接下来作者又谈了谈Query Language，虽然作者用了不少篇幅在阐述这块，主要的想表达就是一个思想，的SQL这种语言是一种High Level的声明式语言，从而可以留给数据库以优化的空间。</p>
+<p>ch4:<!-- raw HTML omitted -->
+这章主要讲了一些编码方面的问题。对于要在网络上传输的数据首先遇到的问题就是编码的问题。毕竟网络并不认识各种代码。一般程序设计语言都会有相应的序列化的模块。但是因为种种问题并不推荐时间，比如，使用会限定在某一个语言，并不利于多语言的开发环境。又比如安全的问题，如果Hacker攻破了某一个Module，那么完全可以Hack进一些恶意的代码进去。<!-- raw HTML omitted -->
+因此比较通用的编码方式比较合适。比如Json， CSV，XML。这三种编码对开发者都是比较友好的，但是对Performance并不是很友好，也就是说，性能优化方面有许多可以做的。所以为了解决这个问题，有了Thrift和Protocol buffer等协议，其相对于Json主要的优化在于优化了Attribute。</p>
 
     </div>
 
