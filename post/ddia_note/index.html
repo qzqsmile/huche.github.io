@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="2169">
+<meta itemprop="wordCount" content="3793">
 
 
 
@@ -190,7 +190,30 @@ Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintai
 <p>OLTP&amp;OLAP</p>
 <p>ch4:<!-- raw HTML omitted -->
 这章主要讲了一些编码方面的问题。对于要在网络上传输的数据首先遇到的问题就是编码的问题。毕竟网络并不认识各种代码。一般程序设计语言都会有相应的序列化的模块。但是因为种种问题并不推荐时间，比如，使用会限定在某一个语言，并不利于多语言的开发环境。又比如安全的问题，如果Hacker攻破了某一个Module，那么完全可以Hack进一些恶意的代码进去。<!-- raw HTML omitted -->
-因此比较通用的编码方式比较合适。比如Json， CSV，XML。这三种编码对开发者都是比较友好的，但是对Performance并不是很友好，也就是说，性能优化方面有许多可以做的。所以为了解决这个问题，有了Thrift和Protocol buffer等协议，其相对于Json主要的优化在于优化了Attribute。</p>
+因此比较通用的编码方式比较合适。比如Json， CSV，XML。这三种编码对开发者都是比较友好的，但是对Performance并不是很友好，也就是说，性能优化方面有许多可以做的。所以为了解决这个问题，有了Thrift和Protocol buffer等协议，其相对于Json主要的优化在于优化了Attribute。<!-- raw HTML omitted -->
+本章节还有相当大的篇幅在讨论向上下兼容性的问题，但是很多讨论的点太过细节，我觉的需要在实际中有相应的应用才会能理解更深入些。<!-- raw HTML omitted --></p>
+<p>part2 分布式数据<!-- raw HTML omitted -->
+ch5: replication <!-- raw HTML omitted -->
+复制数据应该是分布式数据系统一个首先需要考虑的问题。即如何从一个节点复制到另一个节点，会遇到哪些问题。
+对于复制数据而言，一个首先遇到的问题就是Node的拓扑结构问题。</p>
+<ul>
+<li>第一种就是无leader模型，即客户端可以随机访问其节点进行写入和读取，这种模型的优点在于其scalability特别好。可以极好的支持写入和读取，因为写入和读取会自动balance到各个节点。但是有个致命的缺点就是工程实现起来极其复杂，各种时序corner case问题需要进行考虑。因此这种架构在各种项目中并不常见。我个人理解是这种模型的困难在于其各个节点之间的共识上需要做大量的工作，如果有个leader存在的话，很多共识性的工作就可以以leader上的数据为主<!-- raw HTML omitted --></li>
+<li>leader-follower的结构，client写入会走leader，然后replication到各个follower。这种模型的的优缺点与上边的模型其实是相对的，优点就是实现起来相对简单。缺点就是所有的写入的压力都在leader上了。如果leader挂了，需要额外的机制保证数据成功写入。</li>
+</ul>
+<p>因为以上的原因所以本章节阐述的主要就是leader-follow这种架构的分布式数据系统。这里对于leader-follow这种架构遇到的另一个问题就是数据如何同步去到各个节点，即通过同步的方式还是异步的方式同步过去。一般来说同步的方式实现起来最简单，但是很多实际系统中不可能实现。比如跨Geo的系统，同步起来耗时太久。所以Asynchronous这种同步方式在实际生产中或多或少的话都有被采用。</p>
+<p>接下来作者有讨论了一些Node节点recovery的问题。节点Fail的情况分两类，leaderfailed了或者follower fail了。这两种情况需要分别考虑，对于leader fail的情形，其首先要解决的就是重新选择一个leader的机制，第二就是让这个新的leader同步到各个config上去。对于follower failed的机制那么需要在这个节点recovery后如何把数据同步过去。一般同步有几种方法</p>
+<ul>
+<li>statement同步，比如说Mysql中同步用户的sql语句，但是这种时候经常出问题，比如如果sql中引用了Now()这个函数那么其实这个函数再主从当中的执行结果是不同的。</li>
+<li>底层log的同步，这个同步肯定没问题。但是因为太底层了，对带宽的要求先不谈，也不好做一些优化和调整。比如主从版本不一致的话就会导致数据的错误。</li>
+<li>row级别的同步。这个其实介与两者之间的一种同步方式，可以简单理解用SQL将需要修改的数据明确的写出来，传入到follower节点。因此这种其实比较常用。</li>
+</ul>
+<p>对于Asynchronous模式的leader-follower系统，为了系统的scalability，通常需要写入到leader节点，读取的话走的是follower那么会遇到一些奇怪的问题。比如</p>
+<ul>
+<li>read your own write： leader刚写入，但是却读取不到数据，因为写入的数据没有同步到读取的follower上去了。这样就需要一些额外的机制来解决这种问题，比如加时间戳，判断读取的时间是否是最新的。</li>
+<li>Monotonic Reads：即一个用户读取数据时，发现数据不一致，也是因为数据打到了两个数据不一致的node上，强行让其读取同一个node可以解决这个问题。</li>
+<li>Consistent Prefix Reads：对于数据分布在不同partition上，并且有依赖关系的数据，读取出来的数据也可能存在时序上的问题。比如一个事件发现的正常是A-&gt;B.A和B分别存在不同的partition上，那么user读取到数据则可能是B-&gt;A。因为不同的partition的同步并不能保证。</li>
+</ul>
+<p>以上的问题主要是用于数据是异步同步，以及读取节点的不一致导致的。</p>
 
     </div>
 
