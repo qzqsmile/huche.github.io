@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="3793">
+<meta itemprop="wordCount" content="3868">
 
 
 
@@ -214,6 +214,7 @@ ch5: replication <!-- raw HTML omitted -->
 <li>Consistent Prefix Reads：对于数据分布在不同partition上，并且有依赖关系的数据，读取出来的数据也可能存在时序上的问题。比如一个事件发现的正常是A-&gt;B.A和B分别存在不同的partition上，那么user读取到数据则可能是B-&gt;A。因为不同的partition的同步并不能保证。</li>
 </ul>
 <p>以上的问题主要是用于数据是异步同步，以及读取节点的不一致导致的。</p>
+<p>除去单个leader-follower模式还有相对的multi-leader的模型。这种模式多应用在datacenter距离比较远，比如跨Geo的情形</p>
 
     </div>
 
