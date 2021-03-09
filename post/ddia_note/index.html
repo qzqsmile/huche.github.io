@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="3868">
+<meta itemprop="wordCount" content="4458">
 
 
 
@@ -214,7 +214,12 @@ ch5: replication <!-- raw HTML omitted -->
 <li>Consistent Prefix Reads：对于数据分布在不同partition上，并且有依赖关系的数据，读取出来的数据也可能存在时序上的问题。比如一个事件发现的正常是A-&gt;B.A和B分别存在不同的partition上，那么user读取到数据则可能是B-&gt;A。因为不同的partition的同步并不能保证。</li>
 </ul>
 <p>以上的问题主要是用于数据是异步同步，以及读取节点的不一致导致的。</p>
-<p>除去单个leader-follower模式还有相对的multi-leader的模型。这种模式多应用在datacenter距离比较远，比如跨Geo的情形</p>
+<p>除去单个leader-follower模式还有相对的multi-leader的模型。这种模式多应用在datacenter距离比较远，比如跨Geo的情形。这种模型很容易产生conflict，相对于leader-follower模式来说，multi-leader会在各个Geo上分别设置一个conflict的处理模块。而不会单独在每个node上进行冲突的处理。另外multi-leader可以并不是纯粹的全部replication的模式。也就是说可以某个geo上存一部分数据，这样也避免了冲突的发生。<!-- raw HTML omitted --></p>
+<p>除了multi-leader与leader-follower之外，还有leaderless的架构，这种架构并没有明确的leader，一般通过client多次写入来实现replication的功能。这里实际上是把一些leader的工作转换为client的工作了，所以client端要处理很多的corner case。<!-- raw HTML omitted -->
+对于这种架构，一个关键的点就是在于如何保证读取到最新的数据，一般采用的是R+W&gt;N来实现，即读取加写入的node数大于总node数。这里RWN仅仅是指导思想，实际工程处理时需要很多的问题解决。比如写入时没有到要求写入的数量，改怎么办，保留写入的数据还是删掉，该怎么删？</p>
+<p>对于 leader-follower &amp; multi-leader &amp; leaderless 三种架构的分析：
+一般来说leader-follower更加简单，包括实现以及理解上。但是avaiablity以及Scalability上的操作要比其它两种架构复杂一些。
+其它的两种架构的优缺点与leader-follower的架构相反。</p>
 
     </div>
 
