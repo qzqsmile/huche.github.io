@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="4458">
+<meta itemprop="wordCount" content="5577">
 
 
 
@@ -220,6 +220,26 @@ ch5: replication <!-- raw HTML omitted -->
 <p>对于 leader-follower &amp; multi-leader &amp; leaderless 三种架构的分析：
 一般来说leader-follower更加简单，包括实现以及理解上。但是avaiablity以及Scalability上的操作要比其它两种架构复杂一些。
 其它的两种架构的优缺点与leader-follower的架构相反。</p>
+<p>ch6 partition<!-- raw HTML omitted -->
+这章主讲讲解了partition的相关的知识。partition的这个概念的引入其实很顺利成章，对于分布式系统而言，如果数据量的增长大到一个node装不下了。就要分到多个node上，那么对于每个node就可以认为其是一个partition。<!-- raw HTML omitted -->
+本章其实一直在讨论的就是一个问题，那就是怎么进行partitiion。就是如何分的问题。而主要考虑点在于partition对于读写的影响。<!-- raw HTML omitted -->
+如何分有以下二种方法 <!-- raw HTML omitted --></p>
+<ul>
+<li>按照范围分，比如如果数据日期这个元素，每年作为一个partition。但这样会导致数据的不均衡，比如今年的业务暴涨，那么今年的partition中的数据量就会狂涨</li>
+<li>Hash分法，就要进行partition的值进行hash进行，会一定上缓解这个问题，但是要注意使用consistent hash的方式进行处理。以便partition进行横向扩展。
+这里以上的两种方法都没法解决的一个问题就是hot key的问题。本章作者认为hot key应该是应用层面进行解决，比如加一个random number，但是这样再读取的时候也要讲这个random number与client结合起来。</li>
+</ul>
+<p>接下来作者比较大的篇幅讨论的二级索引的场景，因为只有primary index的partition系统，实际上就是根据primary index进行partition,如何把散落在各个partition的数据merge起来，就是二级索引该干的事。一般有两种考虑,分别是读友好和写友好。</p>
+<ul>
+<li>各个partitiion分别建立各自的二级索引，但是这样会导致读取时要访问所有的结点，将所有的数据merge起来。这种很明显是写友好。</li>
+<li>第二种是对同一个key的二级索引放在同一partition中，读取时不需要再访问所有的节点。但是写入时就需要多次写入不同结点，以便更新二级索引。特别是有多个二级索引的情形。</li>
+</ul>
+<p>在数据partition完毕后，client怎么访问呢。作者提了三种方法，但是我认为现在主流用的主要两种。其实这三种完全是根据把路由信息存在哪里进行分类的，</p>
+<ul>
+<li>route信息存node，每个node都存一份。各个node之间进行各种sync，这种要求你使用的这个data system带这种功能，比如redis的集群结构。然而很多系统是不带这种结构的</li>
+<li>放第三方的service， 比如zookeeper,eureka.这种现在使用最为普调，也就是日常所说的服务发现</li>
+<li>存客户端，这种单独使用其实很不靠谱。因为route信息一旦改变，client信息就过期了，你总不能指望client之间同步route信息。所以这种一般作为一种辅助手段，结合以上两种方法进行性能的提升。并不能单独使用。</li>
+</ul>
 
     </div>
 
