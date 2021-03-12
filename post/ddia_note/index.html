@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="5577">
+<meta itemprop="wordCount" content="5733">
 
 
 
@@ -240,6 +240,9 @@ ch5: replication <!-- raw HTML omitted -->
 <li>放第三方的service， 比如zookeeper,eureka.这种现在使用最为普调，也就是日常所说的服务发现</li>
 <li>存客户端，这种单独使用其实很不靠谱。因为route信息一旦改变，client信息就过期了，你总不能指望client之间同步route信息。所以这种一般作为一种辅助手段，结合以上两种方法进行性能的提升。并不能单独使用。</li>
 </ul>
+<p>ch7 Transactions <!-- raw HTML omitted --></p>
+<p>本章节主要讲述了事务的相关知识，我认为事务主要解决了数据的崩溃以及并发的问题，以简化应用层的开发复杂度。
+说到数据系统，就不能不提大名鼎鼎的ACID。ACID当中Consistency比较特殊，其实并不是Transactions可以解决的问题，其实应该在应用层上进行解决。比如说两个账户保证转入和转出的一致性。</p>
 
     </div>
 
