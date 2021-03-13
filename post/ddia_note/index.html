@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="5733">
+<meta itemprop="wordCount" content="6169">
 
 
 
@@ -243,6 +243,17 @@ ch5: replication <!-- raw HTML omitted -->
 <p>ch7 Transactions <!-- raw HTML omitted --></p>
 <p>本章节主要讲述了事务的相关知识，我认为事务主要解决了数据的崩溃以及并发的问题，以简化应用层的开发复杂度。
 说到数据系统，就不能不提大名鼎鼎的ACID。ACID当中Consistency比较特殊，其实并不是Transactions可以解决的问题，其实应该在应用层上进行解决。比如说两个账户保证转入和转出的一致性。</p>
+<p>并发对于读方面的影响在于，由于处于性能考虑，并没有多少系统真正使用纯正的serialable的数据库，而是适当的允许并发以提高性能。这样引起一些并发方面的问题。</p>
+<ul>
+<li>
+<p>首先是读方面的问题，即脏读以及可重复读的问题。脏读产生的原因在于事务并没有作为一个单独的原子性的操作，其中间状态被其它事务读取到了。而可重复读的问题在于，虽然事务被当做了一个原子性操作，但是isolation并不彻底。读取到了其它的事务。为了避免相应的问题，最简单的方式肯定是加锁了，强行并行化。但是加锁实在很影响性能，所以数据库普遍采用MVCC
+的方式进行处理，即记录下相应的版本变动，当读取时，只读取已经读取这个操作发生时已经commited的操作。</p>
+</li>
+<li>
+<p>对于写的影响最明显的莫过于Lost UPdate，也就是多个UPdate并发操作同一个数据的话，后边的数据会覆盖前边的数据。解决这个问题就是其实思路也无它，就三种1.去并发化，有些DB支持原子性的操作2.加锁，即显示加锁 3. 乐观锁，即监测到数据变化再交由用户处理。</p>
+</li>
+<li></li>
+</ul>
 
     </div>
 
