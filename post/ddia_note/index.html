@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="6169">
+<meta itemprop="wordCount" content="6740">
 
 
 
@@ -250,10 +250,13 @@ ch5: replication <!-- raw HTML omitted -->
 的方式进行处理，即记录下相应的版本变动，当读取时，只读取已经读取这个操作发生时已经commited的操作。</p>
 </li>
 <li>
-<p>对于写的影响最明显的莫过于Lost UPdate，也就是多个UPdate并发操作同一个数据的话，后边的数据会覆盖前边的数据。解决这个问题就是其实思路也无它，就三种1.去并发化，有些DB支持原子性的操作2.加锁，即显示加锁 3. 乐观锁，即监测到数据变化再交由用户处理。</p>
+<p>对于写的影响最明显的莫过于Lost UPDATE，也就是多个UPdate并发操作同一个数据的话，后边的数据会覆盖前边的数据。解决这个问题就是其实思路也无它，就三种1.去并发化，有些DB支持原子性的操作2.加锁，即显示加锁 3. 乐观锁，即监测到数据变化再交由用户处理。</p>
 </li>
-<li></li>
 </ul>
+<p>Write Skew and phantom 是另外两个有意思的坑，其产生的原因正好相反，Write Skew是由于select后Write，而Phantom则是write后select，但是中间由于其它事务的一些操作是的相应的select结果出现了变化。比较典型的就是我们平常用outlook定会议室的情形，当我们定会议室时，比如A和B同时定某一个会议室，同时先select一下看下有没有空闲，都发现有空闲，那么就会同时定。这样就会导致同一个会议室被两个人定的情形。解决这个问题除了一些特殊的技巧外，比如文中提到Materializing conflicts，比较普世的方法还是串行化。 <!-- raw HTML omitted --></p>
+<p>对于Serializability，要求每个执行的transacton都很小，要不然会block住其他的Transaction。Two-Phase Locking是一种加锁的实现串行化的方案。锁分两类Exclusive/Shared Locked,与我们平常所说的读写锁很像。有一点需要注意的是，由于幻读是由于没法加锁一些未曾出现的行引起的，所以这里引入了一种新的锁，next-key lock，给一定的范围加锁，从而实现避免幻读的产生。<!-- raw HTML omitted --></p>
+<p>以上提及的锁都是一些悲观锁，但是还有一种乐观锁，可以防止避免幻读。即
+Serializable Snapshot Isolation (SSI)，这种锁就是在commit是判断自己的数据是否被更改过，如果更改过久abort。</p>
 
     </div>
 
