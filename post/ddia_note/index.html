@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="6844">
+<meta itemprop="wordCount" content="6973">
 
 
 
@@ -258,7 +258,10 @@ ch5: replication <!-- raw HTML omitted -->
 <p>以上提及的锁都是一些悲观锁，但是还有一种乐观锁，可以防止避免幻读。即
 Serializable Snapshot Isolation (SSI)，这种锁就是在commit是判断自己的数据是否被更改过，如果更改过久abort。<!-- raw HTML omitted --></p>
 <p>ch9 consistency and Consensus <!-- raw HTML omitted -->
-从consistency谈到了Linearizability问题，因为对于一个系统而言Linearizability会更加易于application层进行开发，否则你就面临着读取到过去数据的问题。</p>
+从consistency谈到了Linearizability问题，因为对于一个系统而言Linearizability会更加易于application层进行开发，否则你就面临着读取到过去数据的问题。文中的一句说说的很好，所谓linearizability就是让多份copy工作的想一个一样。<!-- raw HTML omitted --></p>
+<p>casuilty （待补充）</p>
+<p>Distributed Translation:讲的比较浅，说了说2PC，3PC。其实比较常用的TCC之类的都没有提及
+Consensus 共识这部分我比较熟悉，没发现比较新的知识点</p>
 
     </div>
 
