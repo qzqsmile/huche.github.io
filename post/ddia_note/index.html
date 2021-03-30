@@ -48,7 +48,7 @@
 <meta itemprop="description" content="ch1 Three key criteria for data system. That&rsquo;s Reliable, Scalable, and Maintainable. Maintainalbe means the data system is very easy to main by others. ch2 这一章节主要总结数据模型的发展的问题。要想理解本章，最好先思考下如果是让我来设计，应该如何">
 <meta itemprop="datePublished" content="2021-02-03T23:51:58+08:00" />
 <meta itemprop="dateModified" content="2021-02-03T23:51:58+08:00" />
-<meta itemprop="wordCount" content="6973">
+<meta itemprop="wordCount" content="7620">
 
 
 
@@ -262,6 +262,10 @@ Serializable Snapshot Isolation (SSI)，这种锁就是在commit是判断自己�
 <p>casuilty （待补充）</p>
 <p>Distributed Translation:讲的比较浅，说了说2PC，3PC。其实比较常用的TCC之类的都没有提及
 Consensus 共识这部分我比较熟悉，没发现比较新的知识点</p>
+<p>ch10: Batch Process
+本章主要围绕着Map-Reduce框架讲解了一些Batch Process的常见处理Pattern。Map-Reduce作为Google的三驾马车之一，现在几乎已经从业者的一个常识了。<!-- raw HTML omitted -->
+这里简单介绍一下Map-Reduce的思想，对于大数据量的处理，很简单的一种思路就是加机器进行处理，比如假如有10TB的数据，那么搞10台VM，一台处理1TB。这样解决了数据处理的问题，也就是Map-Reduce中Map的由来，但是有一个问题没有解决，因为很多数据是一个整体，相互之间有相应的relationship，Map-Reduce中，通过Map的操作将相应有联系的机器Reduce到一台机器上，以便让相互有联系的数据可以一起进行处理。<!-- raw HTML omitted -->
+该章剩下大多数的章节都是对一些map-reduce的各种不同的case的介绍，比如如果一个key过大怎么办，map side join。接下来的一部分与我现在工作或多或少有点关系，我关注了一下。首先map-reduce有个缺点，那就是map-reduce必须是一个整体，换句话说，如果你的计算要经过多个map-reduce，那么你的计算过程会经过input-output-input-output&hellip;. 等等，这里的input到output的转换相当消耗计算资源，所以Spark等计算框架将一个task作为一个任务，把这些input output全部联系起来大大加快的计算速度，反之带来的一个小缺点就是如果中间某个task计算失败了，就必须要进行recompute了<!-- raw HTML omitted --></p>
 
     </div>
 
@@ -283,7 +287,11 @@ Consensus 共识这部分我比较熟悉，没发现比较新的知识点</p>
 <footer class="post-footer">
       
       <nav class="post-nav">
-        
+        <a class="prev" href="/post/azure_certification_note/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Azure_Certification_note</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
         <a class="next" href="/post/oauth2_jwt/">
             <span class="next-text nav-default">权限认证协议的总结</span>
             <span class="next-text nav-mobile">下一篇</span>
