@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>k8s on Move</title>
+    <link>https://qzqsmile.github.io/tags/k8s/</link>
+    <description>Recent content in k8s on Move</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 13 Jul 2020 23:18:35 +0800</lastBuildDate><atom:link href="https://qzqsmile.github.io/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8s笔记</title>
+      <link>https://qzqsmile.github.io/post/k8s/k8s%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 13 Jul 2020 23:18:35 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/k8s/k8s%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的</description>
+    </item>
+    
+  </channel>
+</rss>
