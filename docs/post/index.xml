@@ -1,27 +1,355 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 学习笔记</title>
+    <title>Posts on Move</title>
     <link>https://qzqsmile.github.io/post/</link>
-    <description>Recent content in Posts on 学习笔记</description>
+    <description>Recent content in Posts on Move</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 23 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://qzqsmile.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Feb 2021 23:30:46 +0800</lastBuildDate><atom:link href="https://qzqsmile.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DDIA笔记</title>
+      <link>https://qzqsmile.github.io/post/ddia%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Wed, 03 Feb 2021 23:30:46 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/ddia%E7%AC%94%E8%AE%B0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>认证权限的总结</title>
+      <link>https://qzqsmile.github.io/post/%E8%AE%A4%E8%AF%81%E6%9D%83%E9%99%90%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 17 Jan 2021 23:28:07 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/%E8%AE%A4%E8%AF%81%E6%9D%83%E9%99%90%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+      <description>&lt;p&gt;总结一些最近学到的一些认证的应用场景&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;JWT（Json web token) 它的出现主要是克服session认证的一些缺点。因为HTTP都是无状态的，所以HTTP这个协议一般采用session+cookie的方式实现状态的保持，其中session全部放在server来实现。 刚开始这样实现没什么问题，但是随着应用越来越大，当需要对server进行横线扩展时，session该保存在哪里就是一个问题了。当然可以使用一些单独的结点进行存储，比如 redis。但JWT的解决思路是把这些信息都放在client端，通过证书加解密来克服获取具体的权限信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OAuth2.0 Oauth主要是解决authorization的问题。为了解决Authorization的问题，很直接的想法就是在Auth之间添加一层Authorization。 Oauth的流程可以分为以下四步&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;客户端带着clientid去询问user是否给权限&lt;/li&gt;
+&lt;li&gt;user回复yes，同意授予权限。如果不同意，这里就结束了。&lt;/li&gt;
+&lt;li&gt;客户端拿着user同意的回复。在后端通过带着secret的请求询问AcessToken&lt;/li&gt;
+&lt;li&gt;目标网站返回Access Token。 接下来客户端都可以带着这个Access Token去访问目标网站的API。当然实际中的应用要复杂一些。还要考虑refresh的问题。 对于要申请不同Authorization的client分配一个secret，然后对不同的secret进行设置权限。secret的安全性由申请权限的客户端进行保证，这样的设计如果作为一个纯粹后端的项目时可行的。但是实际上Oauth2.0作为一个给User使用的协议，其前端操作时比不可少的，所以如果仅仅有secert，在前端操作时势必会泄露。所以Oauth2引入了一个clientid来标识客户端，这个clientid与secret是一一对应的关系，与secret不同的是，这个clientid是公开的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;OpenID 这是纯粹解决Authencation领域的协议。OpenID经常是基于Oauth2 来实现。换句话说当用户有了相应的Access token之后，可以获取到一个用户的ID，这个ID唯一标识了这个用户的身份。 平常我们使用的微信登陆其实就是Oauth2+openID协议的结合&lt;/li&gt;
+&lt;/ol&gt;</description>
+    </item>
+    
+    <item>
+      <title>Programming Kubernetes notes</title>
+      <link>https://qzqsmile.github.io/post/k8s/programming_kubernetes_notes/</link>
+      <pubDate>Sun, 17 Jan 2021 23:26:11 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/k8s/programming_kubernetes_notes/</guid>
+      <description>&lt;p&gt;ch1 主要是一些overview式的介绍。如果你对k8s之前比较熟悉的话，很多内容都是重复的。对我而言，有以下几点有些启发。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;本书提名k8s编程，这里与其它运行在k8s里的container一个重要的区别是，应用是否自己知道运行在k8s里。换句话就是是否会使用一些k8s的API&lt;/li&gt;
+&lt;li&gt;K8s采取的是乐观锁的机制，Controller需要自己实现乐观锁的判断逻辑&lt;/li&gt;
+&lt;li&gt;K8s采取Edge-driven和level-driven两种结合的方式，来实现响应时间，以及稳定性的要求&lt;/li&gt;
+&lt;li&gt;Operator 本质是为了帮助一些复杂的stateful的container进行部署的模块。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ch2 主要讲了API Server的相关知识，对我没什么特别新的东西。唯一学到的是k8s API。分为GVR(Group Version Resource)GVK (Group version kind)。区别也很简单，简单来说就是类和实例之间的关系。 GVK可以对应许多GVR&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Azure上BI的搭建</title>
+      <link>https://qzqsmile.github.io/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Sun, 01 Nov 2020 23:03:46 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/</guid>
+      <description>最近因为业务需要，尝试搭建着一些大数据平台。发现相对于纯手工从头搞起，还是使用Azure上的Service来搭建来的香。 以上是Azure推荐</description>
+    </item>
+    
+    <item>
+      <title>Golang调度</title>
+      <link>https://qzqsmile.github.io/post/golang/golang%E8%B0%83%E5%BA%A6/</link>
+      <pubDate>Sun, 04 Oct 2020 23:19:49 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/golang/golang%E8%B0%83%E5%BA%A6/</guid>
+      <description>Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统</description>
+    </item>
+    
+    <item>
+      <title>Go的一些知识点</title>
+      <link>https://qzqsmile.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
+      <pubDate>Sat, 03 Oct 2020 22:16:39 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
+      <description>内存分配 微小对象，size &amp;lt; 16B 一般小对象， 16 bytes &amp;lt; size &amp;lt;= 32k 大对象 size &amp;gt; 32k 对应的分配方式分三种： tinny allocations (size &amp;lt; 16 bytes，no pointers) 微型分配器分配。 small allocations ( size</description>
+    </item>
+    
+    <item>
+      <title>K8s总体架构流程</title>
+      <link>https://qzqsmile.github.io/post/k8s/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Thu, 01 Oct 2020 22:25:02 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/k8s/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/</guid>
+      <description>&lt;p&gt;总结一些中k8s的架构各个部分的功能&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/arch/k8s_1.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;总体结构&lt;/p&gt;
+&lt;p&gt;etcd: 分布式存储的module，主要提供高可靠存储。其中我们使用kubectl编写的一些yaml文件，其中的描述信息都会存取其中
+API Server: 与Etcd打交道的的模块，一切访问ectd的操作都要经过它 Scheduler：简单来讲，就是为Pod选定Node的模块，因为调度时需要考虑一些设定的规则，比如node-selector等。就是在这个部分实现的
+Control-Manager: 监控ectd的yaml文件是否变化，并采取相应的操作。不同的模块其实对应不同的control-manager，比如deployment对应自己的controller，因为不同的某块需要的manger策略其实不相同。
+kube-proxy: 一个proxy，之前通信都是用经过iptables-&amp;gt;kubeproxy-&amp;gt;pods 这样。但是后来其实不用经过kubeproxy了。
+kubelet: 各个node里直接操作container的module
+如下这个kubelet到创建contrainer的流程也很有参考意义&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/arch/k8s_2.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;</description>
+    </item>
+    
+    <item>
+      <title>Go的sync库的总结</title>
+      <link>https://qzqsmile.github.io/post/golang/go%E7%9A%84sync%E5%BA%93%E7%9A%84%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 27 Sep 2020 22:20:43 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/golang/go%E7%9A%84sync%E5%BA%93%E7%9A%84%E6%80%BB%E7%BB%93/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql2</title>
+      <link>https://qzqsmile.github.io/post/mysql/mysql_part2/</link>
+      <pubDate>Sun, 20 Sep 2020 21:21:22 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/mysql/mysql_part2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mysql45讲笔记(上)</title>
+      <link>https://qzqsmile.github.io/post/mysql/mysql_part1/</link>
+      <pubDate>Sun, 20 Sep 2020 21:21:19 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/mysql/mysql_part1/</guid>
+      <description>&lt;p&gt;这里主要列出的是极客时间Mysql45讲的思维脑图的笔记。
+Mysql是如何执行的。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mysql的日志系统&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_1.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;事务隔离，为何你的事务看不见&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_2.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;索引相关知识&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_3.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;数据库里的锁
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_4.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库里的行锁
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;重复读模式下事务的实现
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_6.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;普通索引与唯一索引的异同
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;为什么选错索引
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;创建字符串索引的一些方法
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;为何数据库抖了一下
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;删了数据为何空间没减少
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;count为啥那么慢
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;问题解析
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;orderby是如何执行的
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;随机获取一个值
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;为何没用索引
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;SQL语句为何执行那么慢
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;幻读
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;ToDo
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;有哪些饮鸩止渴的方法
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;binlog&amp;amp;redo log 怎么保证数据完整
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;主备如何保持一致
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;如何保证高可用性
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;切换点怎么缺点
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;如何判断mysql是否可用
+&lt;figure&gt;&lt;img src=&#34;https://qzqsmile.github.io/images/storage/mysql_5.png&#34;
+         alt=&#34;Image Alt Text&#34;/&gt;
+&lt;/figure&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redis源码的笔记</title>
+      <link>https://qzqsmile.github.io/post/arch/redis/</link>
+      <pubDate>Sun, 09 Aug 2020 23:20:25 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/arch/redis/</guid>
+      <description>之前看过Redis，最近Redis升6.0改动不小，重新review一下源码，边看边做一些注释，详见 https://github.com/qzqsmile/redis/tree/annotation-601 SDS部分 Redis用来存字符串的数据</description>
+    </item>
+    
+    <item>
+      <title>网络相关的知识</title>
+      <link>https://qzqsmile.github.io/post/net/net/</link>
+      <pubDate>Tue, 04 Aug 2020 23:19:30 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/net/net/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Microserver</title>
+      <link>https://qzqsmile.github.io/post/microserver/microserver/</link>
+      <pubDate>Sat, 01 Aug 2020 23:19:08 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/microserver/microserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K8s笔记</title>
+      <link>https://qzqsmile.github.io/post/k8s/k8s%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 13 Jul 2020 23:18:35 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/k8s/k8s%E7%AC%94%E8%AE%B0/</guid>
+      <description>这里主要记录一下学习K8s的一些简单概念以及操作。想到哪写到哪 kubeadm 集群的安装 kubeadm的出现大大简化了K8s集群搭建的难度，但是这里最坑的</description>
+    </item>
+    
+    <item>
+      <title>Zookeeper的一些常用应用场景</title>
+      <link>https://qzqsmile.github.io/post/arch/zookeeper/</link>
+      <pubDate>Tue, 23 Jun 2020 23:00:31 +0800</pubDate>
+      
+      <guid>https://qzqsmile.github.io/post/arch/zookeeper/</guid>
+      <description>&lt;p&gt;zookeeper可以简单认为是一个KV系统，它与其它的一些存储组件。比如 Mysql， Redis 集群的区别。个人认为主要集中在以下几个方面&lt;/p&gt;
+&lt;p&gt;由于Zab这个multi-paxoes协议的保证，zk的集群是高可靠的，换句话说是满足CAP中的CP。其它的比如Redis集群以及Mysql主从或多或少都有些问题。比如Redis集群应该是只是AP，Mysql亦然
+提供了自增结点这种数据结构，自增这种操作方式很容易的区分两个操作的时间关系。可以快捷的实现一些分布式功能，比如FIFO的分布式队列。以及分布式锁中也有应用
+提供了Watch这种消息推送的消息传递机制，比单纯的客户端轮询消息效率要高不少。
+提供了临时结点这个数据结构，当连接断开后自动删除。可以监控客户端的进程的状态，防止其崩溃&lt;/p&gt;
+&lt;p&gt;分布式队列
+(&lt;a href=&#34;https://github.com/qzqsmile/books/tree/master/zookeeper/distributedQueue&#34;&gt;https://github.com/qzqsmile/books/tree/master/zookeeper/distributedQueue&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;分布式锁
+&lt;a href=&#34;https://github.com/qzqsmile/books/tree/master/zookeeper/d_lock&#34;&gt;https://github.com/qzqsmile/books/tree/master/zookeeper/d_lock&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;服务发现
+&lt;a href=&#34;https://github.com/qzqsmile/books/blob/master/zookeeper/serverDiscovered/serviceDiscovered.go&#34;&gt;https://github.com/qzqsmile/books/blob/master/zookeeper/serverDiscovered/serviceDiscovered.go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;分布式消息
+todo&lt;/p&gt;
+&lt;p&gt;配置中心
+todo&lt;/p&gt;
+&lt;p&gt;负载均衡
+todo&lt;/p&gt;
+&lt;p&gt;zk的watch机制&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Go_memory_translate</title>
-      <link>https://qzqsmile.github.io/post/go_memory_translate/go_memory_translate/</link>
+      <link>https://qzqsmile.github.io/post/golang/go_memory_translate/</link>
       <pubDate>Tue, 23 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://qzqsmile.github.io/post/go_memory_translate/go_memory_translate/</guid>
+      <guid>https://qzqsmile.github.io/post/golang/go_memory_translate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flask的hello world的工作流程</title>
-      <link>https://qzqsmile.github.io/post/flask/flask/</link>
+      <link>https://qzqsmile.github.io/post/arch/flask/</link>
       <pubDate>Thu, 05 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://qzqsmile.github.io/post/flask/flask/</guid>
+      <guid>https://qzqsmile.github.io/post/arch/flask/</guid>
       <description>&lt;h4&gt;输入一条URL，Flask会如何解析&lt;/h4&gt;
 利用flask写应用也有一段时间了，这里尝试分析下flask的官网最简单的 hello world 的demo来加深对flask的理解。
 ```python 
