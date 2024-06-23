@@ -122,9 +122,32 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/ddia%E7%AC%94%E8%AE%B0/">DDIA笔记</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/golang/concurrency_in_go/">Concurrency in Go Notes</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-02-03 </span>
+      <span class="post-time"> 2023-12-30 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>ch1~2 主要是引论以及CSP一些知识的介绍</p>
+<p>ch3 go语言并发的一些库的应用。 包括 waitgroup,sync, syncrw, cond, pool, once channel, select总体介绍的比较基础. 有个知识点比较有意思，我们知道once.do只执行一次,但这里的一次并不是指的根据func的名字来确定的,而是指的do这个函数执行一次。举个例子来说 once.do(func1), once.do(func2) 这其实算执行了两次</p>
+<p>ch4 一些并发的concurrency pattern。 刚开始提到的confinement这种控制并发的编程模式感觉比较tricky，有时也不好想到，本质应该是通过设计将并发修改的情况取消。 方式goroutine leak这里提到的一个设计原则很关键，就是谁创建，谁销毁，这样就不会有泄露的问题了。 or_这种方式如果不考虑不知道数量的情形下的话，也就是一个select的语法糖式的写法。
+ch5 主要讲了一些并发使用场景，比如heartbeat以及如何cancel掉一个goroutine。这章其实是一些零星的知识点的组合，很多点其实都不能算并发的问题，比如Ratelimiter，其实是个限制并发的module。</p>
+<p>ch6 GMP梳理了一下，对这块之前专门学过。所以这章没细看，大概扫了了下。</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/concurrency_in_go/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/microservice/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">微服务设计模式笔记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-12-15 </span>
       
     </div>
   </header>
@@ -134,107 +157,93 @@
       
     </div>
     <div class="read-more">
-      <a href="/post/ddia%E7%AC%94%E8%AE%B0/" class="read-more-link">Read more...</a>
+      <a href="/post/microservice/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
 
     <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E8%AE%A4%E8%AF%81%E6%9D%83%E9%99%90%E7%9A%84%E6%80%BB%E7%BB%93/">认证权限的总结</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/k8s/k8s%E7%BD%91%E7%BB%9C/">K8s网络</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2021-01-17 </span>
+      <span class="post-time"> 2023-12-08 </span>
       
     </div>
   </header>
   
   <div class="post-content">
     <div class="post-summary">
-      <p>总结一些最近学到的一些认证的应用场景</p>
-<ol>
-<li>
-<p>JWT（Json web token) 它的出现主要是克服session认证的一些缺点。因为HTTP都是无状态的，所以HTTP这个协议一般采用session+cookie的方式实现状态的保持，其中session全部放在server来实现。 刚开始这样实现没什么问题，但是随着应用越来越大，当需要对server进行横线扩展时，session该保存在哪里就是一个问题了。当然可以使用一些单独的结点进行存储，比如 redis。但JWT的解决思路是把这些信息都放在client端，通过证书加解密来克服获取具体的权限信息。</p>
-</li>
-<li>
-<p>OAuth2.0 Oauth主要是解决authorization的问题。为了解决Authorization的问题，很直接的想法就是在Auth之间添加一层Authorization。 Oauth的流程可以分为以下四步</p>
-</li>
-</ol>
+      
+    </div>
+    <div class="read-more">
+      <a href="/post/k8s/k8s%E7%BD%91%E7%BB%9C/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/k8s/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/">K8s每讲笔记</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-10-31 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      
+    </div>
+    <div class="read-more">
+      <a href="/post/k8s/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/microservice/qa/">微服务的常见问题梳理-1</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2023-06-23 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <h2 id="前言">前言</h2>
+<p>学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。</p>
+<h2 id="问题列表">问题列表</h2>
+<h3 id="整体性的问题">整体性的问题:</h3>
+<p><strong>什么是微服务架构</strong></p>
+<p>    为了回答微服务框架的诞生，我们首先需要梳理一下框架整体的演进历史，这样才好理解为什么微服务框架会诞生，以及它解决哪些的问题。<br>
+    在程序开始的开始，最为常用的架构为单体架构。这个架构我相信每一个开发者都有接触过，因为它实际上就是一个无架构的模式，所有的服务都部署在同一个计算节点上。这样的架构很明显有一些优点和缺点.<br>
+优点:</p>
 <ul>
-<li>客户端带着clientid去询问user是否给权限</li>
-<li>user回复yes，同意授予权限。如果不同意，这里就结束了。</li>
-<li>客户端拿着user同意的回复。在后端通过带着secret的请求询问AcessToken</li>
-<li>目标网站返回Access Token。 接下来客户端都可以带着这个Access Token去访问目标网站的API。当然实际中的应用要复杂一些。还要考虑refresh的问题。 对于要申请不同Authorization的client分配一个secret，然后对不同的secret进行设置权限。secret的安全性由申请权限的客户端进行保证，这样的设计如果作为一个纯粹后端的项目时可行的。但是实际上Oauth2.0作为一个给User使用的协议，其前端操作时比不可少的，所以如果仅仅有secert，在前端操作时势必会泄露。所以Oauth2引入了一个clientid来标识客户端，这个clientid与secret是一一对应的关系，与secret不同的是，这个clientid是公开的。</li>
+<li>因为所有的服务都部署在一起，开发过程当中不用考虑分布式带来的各种的问题。比如服务发现，服务通信，分布式事务。等等困恼着各种分布式架构很久的问题</li>
+<li>部署运营层面会额外的简单，所有的服务都部署在一个计算节点(通常是一台服务器)，所以部署的层面的事情就额外的简单，只要看好这台机器基本上就不会出什么问题，或者说出了问题可以很快的进行修复。</li>
 </ul>
-<ol start="3">
-<li>OpenID 这是纯粹解决Authencation领域的协议。OpenID经常是基于Oauth2 来实现。换句话说当用户有了相应的Access token之后，可以获取到一个用户的ID，这个ID唯一标识了这个用户的身份。 平常我们使用的微信登陆其实就是Oauth2+openID协议的结合</li>
-</ol>
-    </div>
-    <div class="read-more">
-      <a href="/post/%E8%AE%A4%E8%AF%81%E6%9D%83%E9%99%90%E7%9A%84%E6%80%BB%E7%BB%93/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/k8s/programming_kubernetes_notes/">Programming Kubernetes notes</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2021-01-17 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>ch1 主要是一些overview式的介绍。如果你对k8s之前比较熟悉的话，很多内容都是重复的。对我而言，有以下几点有些启发。</p>
+<p>缺点:</p>
 <ul>
-<li>本书提名k8s编程，这里与其它运行在k8s里的container一个重要的区别是，应用是否自己知道运行在k8s里。换句话就是是否会使用一些k8s的API</li>
-<li>K8s采取的是乐观锁的机制，Controller需要自己实现乐观锁的判断逻辑</li>
-<li>K8s采取Edge-driven和level-driven两种结合的方式，来实现响应时间，以及稳定性的要求</li>
-<li>Operator 本质是为了帮助一些复杂的stateful的container进行部署的模块。</li>
+<li>可提供的业务服务的规模有限，虽然摩尔定律统治了IT界很久，但是单台计算机的可以提供的计算能力还是远远跟不上现实世界业务发展的需要。比如像Google这种企业，服务的人群规模都是数以亿级的范围。这种情况下，其实就算采购了性能最为强大的服务器，也没办法在一台服务器上支撑整个业务。</li>
+<li>扩缩容差，带来的结果就是计算收益率差。由于很多大型的服务，各个服务的节点的要求的计算能力不一样。比如服务A调用服务B，这个时候可能由于A，B上业务的不同，导致A需要部署3台，B需要部署6台。在单体架构里，如果不改变代码架构的情况下，你只能选择同时部署6台机器来解决该计算瓶颈的问题。很显然这样造成了很多资源上的浪费。</li>
 </ul>
-<p>ch2 主要讲了API Server的相关知识，对我没什么特别新的东西。唯一学到的是k8s API。分为GVR(Group Version Resource)GVK (Group version kind)。区别也很简单，简单来说就是类和实例之间的关系。 GVK可以对应许多GVR</p>
+<p>     由于上述的原因，后边的架构慢慢将单体的服务拆开。比如在21世纪初的SOA架构（Service-Oriented Architecture）。该架构是微服务架构的前身。该服务的问题在于企图用复杂来对抗复杂。即指定了一系列的繁杂的标准，用来解决现实生活当中多样的业务请求。这样虽然可以很好的解决问题，但是无疑给开发者带来了巨大的心智负担。所以虽然在各大巨头的支撑下，经过数年的发展，最后还是偃旗息鼓了。</p>
+<p>     SOA虽然倒了，但是也不可能回到单体的路上，毕竟现实中的痛点依然存在。此时微服务接过了大旗，其实刚开始时微服务一直被认为是soa的变体。但是随着慢慢发展，
+发现微服务还是显著区别于SOA那套东西。最为重要的一点即微服务更为自由，没有繁杂的标准约束开发人员。比如来说在SOA中通信，你可能必须通过总线的方式。而微服务当中，你可以通过任意的方式进行，比如grpc，http，thrift，等等等。总体上来说，SOA把业务的复杂性留给了标准指定者，而微服务则把相现实世界的复杂性，留给了开发人员来处理。</p>
+<p><strong>怎么保证微服务架构的高可用</strong><br>
+<strong>怎么判定服务是否健康？</strong><br>
+<strong>如果服务不健康该怎么办？</strong>
+<strong>怎么判定服务已经从不健康状态恢复过来了？</strong>
+<strong>听说你用到了Redis作为缓存，如果你的Redis崩溃了会怎么样？</strong>
+<strong>听你说你用到了Kafka作为消息队列，如果你的Kafka崩溃了怎么办？</strong>
+<strong>现在需要设计一个开发平台，即提供接口给合作伙伴用，你觉得需要考虑一些什么问题？</strong></p>
+<h4 id="ref">Ref:</h4>
+<p>凤凰架构：https://icyfenix.cn/<br>
+极客时间:https://time.geekbang.org/column/article/668548</p>
     </div>
     <div class="read-more">
-      <a href="/post/k8s/programming_kubernetes_notes/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/">Azure上BI的搭建</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-11-01 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      最近因为业务需要，尝试搭建着一些大数据平台。发现相对于纯手工从头搞起，还是使用Azure上的Service来搭建来的香。 以上是Azure推荐
-    </div>
-    <div class="read-more">
-      <a href="/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/golang%E8%B0%83%E5%BA%A6/">Golang调度</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-10-04 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/golang%E8%B0%83%E5%BA%A6/" class="read-more-link">Read more...</a>
+      <a href="/post/microservice/qa/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
@@ -280,7 +289,7 @@
   <span class="copyright-year">
     &copy; 
     2020 - 
-    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Q</span>
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Q</span>
   </span>
 </div>
 
