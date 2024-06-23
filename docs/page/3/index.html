@@ -122,6 +122,70 @@
           <section id="posts" class="posts">
     <article class="post">
   <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/k8s/programming_kubernetes_notes/">Programming Kubernetes notes</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2021-01-17 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      <p>ch1 主要是一些overview式的介绍。如果你对k8s之前比较熟悉的话，很多内容都是重复的。对我而言，有以下几点有些启发。</p>
+<ul>
+<li>本书提名k8s编程，这里与其它运行在k8s里的container一个重要的区别是，应用是否自己知道运行在k8s里。换句话就是是否会使用一些k8s的API</li>
+<li>K8s采取的是乐观锁的机制，Controller需要自己实现乐观锁的判断逻辑</li>
+<li>K8s采取Edge-driven和level-driven两种结合的方式，来实现响应时间，以及稳定性的要求</li>
+<li>Operator 本质是为了帮助一些复杂的stateful的container进行部署的模块。</li>
+</ul>
+<p>ch2 主要讲了API Server的相关知识，对我没什么特别新的东西。唯一学到的是k8s API。分为GVR(Group Version Resource)GVK (Group version kind)。区别也很简单，简单来说就是类和实例之间的关系。 GVK可以对应许多GVR</p>
+    </div>
+    <div class="read-more">
+      <a href="/post/k8s/programming_kubernetes_notes/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/">Azure上BI的搭建</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-11-01 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      最近因为业务需要，尝试搭建着一些大数据平台。发现相对于纯手工从头搞起，还是使用Azure上的Service来搭建来的香。 以上是Azure推荐
+    </div>
+    <div class="read-more">
+      <a href="/post/cloud/azure%E4%B8%8Abi%E7%9A%84%E6%90%AD%E5%BB%BA/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title"><a class="post-link" href="/post/golang/golang%E8%B0%83%E5%BA%A6/">Golang调度</a></h1>
+    <div class="post-meta">
+      <span class="post-time"> 2020-10-04 </span>
+      
+    </div>
+  </header>
+  
+  <div class="post-content">
+    <div class="post-summary">
+      Golang协程调度的知识点总结 Golang协程调度器的由来 我们都知道DOS系统是PC的上古系统，其中DOS系统可以认为是个单进程的操作系统
+    </div>
+    <div class="read-more">
+      <a href="/post/golang/golang%E8%B0%83%E5%BA%A6/" class="read-more-link">Read more...</a>
+    </div>
+  </div>
+</article>
+
+    <article class="post">
+  <header class="post-header">
     <h1 class="post-title"><a class="post-link" href="/post/golang/go%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/">Go的一些知识点</a></h1>
     <div class="post-meta">
       <span class="post-time"> 2020-10-03 </span>
@@ -168,201 +232,6 @@ kubelet: 各个node里直接操作container的module
     </div>
     <div class="read-more">
       <a href="/post/k8s/k8s%E6%80%BB%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%81%E7%A8%8B/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/golang/go%E7%9A%84sync%E5%BA%93%E7%9A%84%E6%80%BB%E7%BB%93/">Go的sync库的总结</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-09-27 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      
-    </div>
-    <div class="read-more">
-      <a href="/post/golang/go%E7%9A%84sync%E5%BA%93%E7%9A%84%E6%80%BB%E7%BB%93/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql/mysql_part2/">Mysql2</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-09-20 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      
-    </div>
-    <div class="read-more">
-      <a href="/post/mysql/mysql_part2/" class="read-more-link">Read more...</a>
-    </div>
-  </div>
-</article>
-
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/mysql/mysql_part1/">Mysql45讲笔记(上)</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2020-09-20 </span>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>这里主要列出的是极客时间Mysql45讲的思维脑图的笔记。
-Mysql是如何执行的。</p>
-<ol>
-<li>Mysql的日志系统</li>
-</ol>
-<figure><img src="/images/storage/mysql_1.png"
-         alt="Image Alt Text"/>
-</figure>
-
-<ol>
-<li>事务隔离，为何你的事务看不见</li>
-</ol>
-<figure><img src="/images/storage/mysql_2.png"
-         alt="Image Alt Text"/>
-</figure>
-
-<ol>
-<li>索引相关知识</li>
-</ol>
-<figure><img src="/images/storage/mysql_3.png"
-         alt="Image Alt Text"/>
-</figure>
-
-<ol>
-<li>
-<p>数据库里的锁
-<figure><img src="/images/storage/mysql_4.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-</li>
-<li>
-<p>数据库里的行锁
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-</li>
-</ol>
-<p>重复读模式下事务的实现
-<figure><img src="/images/storage/mysql_6.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>普通索引与唯一索引的异同
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>为什么选错索引
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>创建字符串索引的一些方法
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>为何数据库抖了一下
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>删了数据为何空间没减少
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>count为啥那么慢
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>问题解析
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>orderby是如何执行的
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>随机获取一个值
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>为何没用索引
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>SQL语句为何执行那么慢
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>幻读
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>ToDo
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>有哪些饮鸩止渴的方法
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>binlog&amp;redo log 怎么保证数据完整
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>主备如何保持一致
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>如何保证高可用性
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>切换点怎么缺点
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-<p>如何判断mysql是否可用
-<figure><img src="/images/storage/mysql_5.png"
-         alt="Image Alt Text"/>
-</figure>
-</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/mysql/mysql_part1/" class="read-more-link">Read more...</a>
     </div>
   </div>
 </article>
