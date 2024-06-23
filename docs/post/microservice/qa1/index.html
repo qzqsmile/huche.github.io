@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>微服务的常见问题梳理-1 - Move</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Q" /><meta name="description" content="前言 学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。 问" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.106.0 with theme even" />
+
+
+<link rel="canonical" href="https://qzqsmile.github.io/post/microservice/qa1/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.f92fd13721ddf72129410fd8250e73152cc6f2438082b6c0208dc24ee7c13fc4.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="微服务的常见问题梳理-1" />
+<meta property="og:description" content="前言 学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。 问" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://qzqsmile.github.io/post/microservice/qa1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-23T09:52:51+08:00" />
+<meta property="article:modified_time" content="2022-01-23T09:52:51+08:00" />
+
+<meta itemprop="name" content="微服务的常见问题梳理-1">
+<meta itemprop="description" content="前言 学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。 问"><meta itemprop="datePublished" content="2022-01-23T09:52:51+08:00" />
+<meta itemprop="dateModified" content="2022-01-23T09:52:51+08:00" />
+<meta itemprop="wordCount" content="1355">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="微服务的常见问题梳理-1"/>
+<meta name="twitter:description" content="前言 学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。 问"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Move </a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Move </a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">微服务的常见问题梳理-1</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2022-01-23 </span>
+        
+        
+      </div>
+    </header>
+
+    
+    <div class="post-content">
+      <h2 id="前言">前言</h2>
+<p>学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。</p>
+<h2 id="问题列表">问题列表</h2>
+<h3 id="整体性的问题">整体性的问题</h3>
+<h4 id="1-什么是微服务架构">1. 什么是微服务架构</h4>
+<p>为了回答微服务框架的诞生，我们首先需要梳理一下框架整体的演进历史，这样才好理解为什么微服务框架会诞生，以及它解决哪些的问题。<br>
+在程序开始的开始，最为常用的架构为单体架构。这个架构我相信每一个开发者都有接触过，因为它实际上就是一个无架构的模式，所有的服务都部署在同一个计算节点上。这样的架构很明显有一些优点和缺点。</p>
+<p><strong>优点:</strong></p>
+<ul>
+<li>因为所有的服务都部署在一起，开发过程当中不用考虑分布式带来的各种问题，比如服务发现，服务通信，分布式事务等等困扰分布式架构很久的问题。</li>
+<li>部署运营层面会额外的简单，所有的服务都部署在一个计算节点（通常是一台服务器），所以部署的层面的事情就额外的简单，只要看好这台机器基本上就不会出什么问题，或者说出了问题可以很快地进行修复。</li>
+</ul>
+<p><strong>缺点:</strong></p>
+<ul>
+<li>可提供的业务服务的规模有限，虽然摩尔定律统治了 IT 界很久，但是单台计算机的计算能力还是远远跟不上现实世界业务发展的需要。比如像 Google 这种企业，服务的人群规模都是数以亿级的范围。这种情况下，其实就算采购了性能最为强大的服务器，也没办法在一台服务器上支撑整个业务。</li>
+<li>扩缩容困难，带来的结果就是计算收益率差。由于很多大型的服务，各个服务节点的计算能力需求不一样。比如服务 A 调用服务 B，这个时候可能由于 A、B 上业务的不同，导致 A 需要部署 3 台，B 需要部署 6 台。在单体架构里，如果不改变代码架构的情况下，你只能选择同时部署 6 台机器来解决该计算瓶颈的问题。很显然这样造成了很多资源上的浪费。</li>
+</ul>
+<p>由于上述的原因，后来的架构慢慢将单体的服务拆开。比如在 21 世纪初的 SOA 架构（Service-Oriented Architecture）。该架构是微服务架构的前身。该架构的问题在于企图用复杂来对抗复杂。即指定了一系列的繁杂的标准，用来解决现实生活当中多样的业务请求。这样虽然可以很好地解决问题，但是无疑给开发者带来了巨大的心智负担。所以虽然在各大巨头的支撑下，经过数年的发展，最后还是偃旗息鼓了。</p>
+<p>SOA 虽然倒了，但是也不可能回到单体的路上，毕竟现实中的痛点依然存在。此时微服务接过了大旗，其实刚开始时微服务一直被认为是 SOA 的变体。但是随着慢慢发展，发现微服务还是显著区别于 SOA 那套东西。最为重要的一点即微服务更为自由，没有繁杂的标准约束开发人员。比如来说在 SOA 中通信，你可能必须通过总线的方式。而微服务当中，你可以通过任意的方式进行，比如 gRPC，HTTP，Thrift 等等。总体上来说，SOA 把业务的复杂性留给了标准指定者，而微服务则把现实世界的复杂性留给了开发人员来处理。</p>
+<h4 id="2-怎么保证微服务架构的高可用">2. 怎么保证微服务架构的高可用</h4>
+<h4 id="3-怎么判定服务是否健康">3. 怎么判定服务是否健康？</h4>
+<h4 id="4-如果服务不健康该怎么办">4. 如果服务不健康该怎么办？</h4>
+<h4 id="5-怎么判定服务已经从不健康状态恢复过来了">5. 怎么判定服务已经从不健康状态恢复过来了？</h4>
+<h4 id="6-听说你用到了-redis-作为缓存如果你的-redis-崩溃了会怎么样">6. 听说你用到了 Redis 作为缓存，如果你的 Redis 崩溃了会怎么样？</h4>
+<h4 id="7-听你说你用到了-kafka-作为消息队列如果你的-kafka-崩溃了怎么办">7. 听你说你用到了 Kafka 作为消息队列，如果你的 Kafka 崩溃了怎么办？</h4>
+<h4 id="8-现在需要设计一个开发平台即提供接口给合作伙伴用你觉得需要考虑一些什么问题">8. 现在需要设计一个开发平台，即提供接口给合作伙伴用，你觉得需要考虑一些什么问题？</h4>
+<h4 id="ref">Ref:</h4>
+<p>凤凰架构：https://icyfenix.cn/<br>
+极客时间：https://time.geekbang.org/column/article/668548</p>
+
+    </div>
+
+    
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        <a class="prev" href="/post/k8s/k8s%E6%AF%8F%E8%AE%B2%E7%AC%94%E8%AE%B0/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">K8s每讲笔记</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/ddia%E7%AC%94%E8%AE%B0/">
+            <span class="next-text nav-default">DDIA笔记</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+  <a href="https://qzqsmile.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2020 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>Q</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

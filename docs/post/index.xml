@@ -49,40 +49,11 @@ ch5 主要讲了一些并发使用场景，比如heartbeat以及如何cancel掉�
     
     <item>
       <title>微服务的常见问题梳理-1</title>
-      <link>https://qzqsmile.github.io/post/microservice/qa/</link>
-      <pubDate>Fri, 23 Jun 2023 09:52:51 +0800</pubDate>
+      <link>https://qzqsmile.github.io/post/microservice/qa1/</link>
+      <pubDate>Sun, 23 Jan 2022 09:52:51 +0800</pubDate>
       
-      <guid>https://qzqsmile.github.io/post/microservice/qa/</guid>
-      <description>&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
-&lt;p&gt;学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。&lt;/p&gt;
-&lt;h2 id=&#34;问题列表&#34;&gt;问题列表&lt;/h2&gt;
-&lt;h3 id=&#34;整体性的问题&#34;&gt;整体性的问题:&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;什么是微服务架构&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;    为了回答微服务框架的诞生，我们首先需要梳理一下框架整体的演进历史，这样才好理解为什么微服务框架会诞生，以及它解决哪些的问题。&lt;br&gt;
-    在程序开始的开始，最为常用的架构为单体架构。这个架构我相信每一个开发者都有接触过，因为它实际上就是一个无架构的模式，所有的服务都部署在同一个计算节点上。这样的架构很明显有一些优点和缺点.&lt;br&gt;
-优点:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;因为所有的服务都部署在一起，开发过程当中不用考虑分布式带来的各种的问题。比如服务发现，服务通信，分布式事务。等等困恼着各种分布式架构很久的问题&lt;/li&gt;
-&lt;li&gt;部署运营层面会额外的简单，所有的服务都部署在一个计算节点(通常是一台服务器)，所以部署的层面的事情就额外的简单，只要看好这台机器基本上就不会出什么问题，或者说出了问题可以很快的进行修复。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;缺点:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;可提供的业务服务的规模有限，虽然摩尔定律统治了IT界很久，但是单台计算机的可以提供的计算能力还是远远跟不上现实世界业务发展的需要。比如像Google这种企业，服务的人群规模都是数以亿级的范围。这种情况下，其实就算采购了性能最为强大的服务器，也没办法在一台服务器上支撑整个业务。&lt;/li&gt;
-&lt;li&gt;扩缩容差，带来的结果就是计算收益率差。由于很多大型的服务，各个服务的节点的要求的计算能力不一样。比如服务A调用服务B，这个时候可能由于A，B上业务的不同，导致A需要部署3台，B需要部署6台。在单体架构里，如果不改变代码架构的情况下，你只能选择同时部署6台机器来解决该计算瓶颈的问题。很显然这样造成了很多资源上的浪费。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;     由于上述的原因，后边的架构慢慢将单体的服务拆开。比如在21世纪初的SOA架构（Service-Oriented Architecture）。该架构是微服务架构的前身。该服务的问题在于企图用复杂来对抗复杂。即指定了一系列的繁杂的标准，用来解决现实生活当中多样的业务请求。这样虽然可以很好的解决问题，但是无疑给开发者带来了巨大的心智负担。所以虽然在各大巨头的支撑下，经过数年的发展，最后还是偃旗息鼓了。&lt;/p&gt;
-&lt;p&gt;     SOA虽然倒了，但是也不可能回到单体的路上，毕竟现实中的痛点依然存在。此时微服务接过了大旗，其实刚开始时微服务一直被认为是soa的变体。但是随着慢慢发展，
-发现微服务还是显著区别于SOA那套东西。最为重要的一点即微服务更为自由，没有繁杂的标准约束开发人员。比如来说在SOA中通信，你可能必须通过总线的方式。而微服务当中，你可以通过任意的方式进行，比如grpc，http，thrift，等等等。总体上来说，SOA把业务的复杂性留给了标准指定者，而微服务则把相现实世界的复杂性，留给了开发人员来处理。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;怎么保证微服务架构的高可用&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;怎么判定服务是否健康？&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;如果服务不健康该怎么办？&lt;/strong&gt;
-&lt;strong&gt;怎么判定服务已经从不健康状态恢复过来了？&lt;/strong&gt;
-&lt;strong&gt;听说你用到了Redis作为缓存，如果你的Redis崩溃了会怎么样？&lt;/strong&gt;
-&lt;strong&gt;听你说你用到了Kafka作为消息队列，如果你的Kafka崩溃了怎么办？&lt;/strong&gt;
-&lt;strong&gt;现在需要设计一个开发平台，即提供接口给合作伙伴用，你觉得需要考虑一些什么问题？&lt;/strong&gt;&lt;/p&gt;
-&lt;h4 id=&#34;ref&#34;&gt;Ref:&lt;/h4&gt;
-&lt;p&gt;凤凰架构：https://icyfenix.cn/&lt;br&gt;
-极客时间:https://time.geekbang.org/column/article/668548&lt;/p&gt;</description>
+      <guid>https://qzqsmile.github.io/post/microservice/qa1/</guid>
+      <description>前言 学习一个东西，本质上是要回答涉及该事物的若干问题。接下来会有一系列的文章，梳理一下微服务的相关的问题，从而达到更好的掌握微服务的目的。 问</description>
     </item>
     
     <item>
